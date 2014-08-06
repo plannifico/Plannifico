@@ -9,9 +9,17 @@ The first open source planning, budgeting and forecasting system based on an ope
 * Combine bottom-up and top-down planning
 * Support easy data-integration
 * Scale to millions of records
+ 
+Components
+----------
+
+* Plannifico-Server: Plannifico calculation engine
 
 Running
+-------
 
 Documentation
+----------
 
 License
+-------
