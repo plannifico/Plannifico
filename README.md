@@ -13,7 +13,9 @@ The first open source planning, budgeting and forecasting system based on an ope
 Components
 ----------
 
-* Plannifico-Server: Plannifico calculation engine
+* Plannifico-Server:  Plannifico calculation engine
+* Plannifico-Console: Plannifico administration and calculation console
+* Plannifico-Client:  Plannifico calculation client
 
 Running
 -------
