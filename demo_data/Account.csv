@@ -1,0 +1,82 @@
+Account,Account Name,Customer Flag,Employee,Sector,Industry,Open Opportunity
+A01,Output Respect Inc.,Not Customer,Empty,"Consumer Products, Retail and Distribution",Services,Open
+A02,Cowcatcher Performance Inc.,Not Customer,Empty,Manufacturing,High Tech,Open
+A03,Handmaid Protect Private,Not Customer,50-249,Manufacturing,High Tech,Open
+A04,Maybe Conspire Infobasis,Customer,Empty,"Consumer Products, Retail and Distribution",Services,Open
+A05,Porthole Continous Corporation,Not Customer,0-50,"Consumer Products, Retail and Distribution","Engineering, Construction & Real Estate",Open
+A06,Warpath Leading,Customer,1000-1999,Manufacturing,High Tech,Open
+A07,Hellcat Assignment Billing,Customer,Empty,Manufacturing,High Tech,Open
+A08,Lovelorn Technical Investment,Customer,1000-1999,Manufacturing,Mill Products,Open
+A09,Nobleman Improve Iconoculture,Customer,250-499,"Consumer Products, Retail and Distribution",Services,Open
+A10,Sawdust Value Saber Tech,Customer,2000-2999,"Consumer Products, Retail and Distribution",Services,Open
+A11,Hindquarter Normal,Customer,Empty,Manufacturing,High Tech,Open
+A12,Overfastidious Formal Fusion Management,Customer,Empty,"Consumer Products, Retail and Distribution",Consumer Products,Open
+A13,Overabundant Industry,Customer,50-249,"Consumer Products, Retail and Distribution",Services,Open
+A14,Overleap Dovetail Investment,Customer,50-249,Manufacturing,Automotive,Open
+A15,Knothole Improve Networks,Not Customer,500-999,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A16,Firebug National,Customer,Empty,"Consumer Products, Retail and Distribution",Consumer Products,Open
+A17,Wiretap Science,Customer,250-499,Manufacturing,Mill Products,Open
+A18,Fretwork Standing Sunbeam,Customer,Empty,"Consumer Products, Retail and Distribution",Consumer Products,Open
+A19,Rubdown Combine,Not Customer,1000-1999,"Consumer Products, Retail and Distribution","Travel, Hospitality & Entertainment",Open
+A20,Wishbone Connive,Not Customer,1000-1999,Manufacturing,Mill Products,Open
+A21,Overland Environment Pacific,Not Customer,3000-4999,"Consumer Products, Retail and Distribution","Engineering, Construction & Real Estate",Open
+A22,Textbook Superior Novusedge,Not Customer,5000,Manufacturing,Natural Resources,Open
+A23,Wherewith Motion Inetcam,Not Customer,500-999,"Consumer Products, Retail and Distribution",Services,Open
+A24,Jigsaw Dependable Software,Customer,Empty,"Consumer Products, Retail and Distribution",Services,Open
+A25,Underweight Industry Echopass Management,Not Customer,1000-1999,Financial Services,Retail Banking,Open
+A26,Pocketknife Coalesce Corp,Not Customer,500-999,"Consumer Products, Retail and Distribution","Engineering, Construction & Real Estate",Open
+A27,Foretaste Instruments,Not Customer,0-50,Financial Services,Retail Banking,Open
+A28,Fortnight Counts,Customer,500-999,"Consumer Products, Retail and Distribution",Services,Open
+A29,Headstall Connive Clarity,Not Customer,Empty,Manufacturing,Mill Products,Open
+A30,Footfall Unite Sepaton,Not Customer,1000-1999,Financial Services,Retail Banking,Open
+A31,Nutshell Monitor Clovis Assoc.,Not Customer,50-249,Life Sciences,Medical Devices,Open
+A32,Halfheareted,Not Customer,Empty,Manufacturing,High Tech,Open
+A33,Backwash Cement,Not Customer,Empty,Manufacturing,Mill Products,Open
+A34,Slipshod,Not Customer,250-499,"Consumer Products, Retail and Distribution",Consumer Products,Open
+A35,Weekend Technical Networks,Not Customer,Empty,,,Open
+A36,Whitecap Performance Technology,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A37,Smoothbore Service Aconite,Not Customer,Empty,,,Open
+A38,Gunshot Checking,Not Customer,Empty,Manufacturing,Mill Products,Open
+A39,Insole Experience,Not Customer,Empty,,,Open
+A40,Wingspread Intin Vividlogics Management,Customer,Empty,,,Open
+A41,Witchcraft Integrated,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A42,Crosspiece Formal,Not Customer,Empty,,,Open
+A43,Foxhole Indispensable,Not Customer,Empty,,,Open
+A44,Outward Associate,Adopted Customer,1000-1999,"Consumer Products, Retail and Distribution","Travel, Hospitality & Entertainment",Open
+A45,Worktable,Customer,Empty,,,Open
+A46,Landlocked Unite Motorola Llc,Not Customer,Empty,"Consumer Products, Retail and Distribution",Services,Open
+A47,Highball Need Corporation,Not Customer,Empty,,,Open
+A48,Superego String,Not Customer,Empty,,,Open
+A49,Uphold Accountability Lightening,Not Customer,Empty,,,Open
+A50,Fillmore Continous Syntricity,Not Customer,Empty,,,Open
+A51,Nowise Tech,Not Customer,Empty,,,Open
+A52,Hunchback Counts Tech,Not Customer,Empty,,,Open
+A53,Blacktop Intra Mominium,Not Customer,Empty,,,Open
+A54,Homebody Partners Personeta,Not Customer,Empty,,,Open
+A55,Overcurious Science Fusion,Not Customer,Empty,,,Open
+A56,Baseball Diagonistics Scanr,Not Customer,Empty,,,Open
+A57,Adays Prize Research,Not Customer,Empty,,,Open
+A58,Sharpshooter Strong Transofrm,Not Customer,Empty,Infrastructure Services,Telecommunications,Open
+A59,Sweetbrier Cement Browster,Not Customer,Empty,Manufacturing,Industrial Machinery,Open
+A60,Bedridden Nation,Not Customer,Empty,"Consumer Products, Retail and Distribution",Consumer Products,Open
+A61,Muskmelon Connive Sagequest Company,Not Customer,Empty,"Consumer Products, Retail and Distribution","Engineering, Construction & Real Estate",Open
+A62,Forefather Integrity,Not Customer,250-499,"Consumer Products, Retail and Distribution","Travel, Hospitality & Entertainment",Open
+A63,Soever Attitude,Not Customer,Empty,,,Open
+A64,Overleap Intra,Not Customer,Empty,,,Open
+A65,Outhouse Dependable Foundation,Not Customer,1000-1999,,,Open
+A66,Whitewash Intin,Not Customer,Empty,,,Open
+A67,Upend Protect,Customer,Empty,,,Open
+A68,Eyesight Intra I-Solutions,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A69,Sportsmanship Outstanding Akella,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A70,Headstone Diverse Neverfail,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A71,Pickpocket Diverse Clarity,Not Customer,Empty,Manufacturing,Mill Products,Open
+A72,Meanwhile Counts Success Tech,Not Customer,Empty,Manufacturing,Mill Products,Open
+A73,Outstay Conspire,Not Customer,Empty,Manufacturing,Mill Products,Open
+A74,Waterway Monitor,Not Customer,Empty,,,Open
+A75,Vainglory,Not Customer,Empty,,,Open
+A76,Clockwork Llc,Not Customer,500-999,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A77,Openwork Motion Corp.,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A78,Middlemost Innovative Co.,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A79,Sideways Into Virtualedge,Not Customer,Empty,"Consumer Products, Retail and Distribution",Retail & Wholesale Distribution,Open
+A80,Farmyard Inton Mimosa,Not Customer,Empty,Manufacturing,Industrial Machinery,Open
+A81,Showcase Protect,Not Customer,Empty,,,Open

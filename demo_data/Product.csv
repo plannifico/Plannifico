@@ -1,0 +1,267 @@
+Product,Category,Product Name,Subcategory
+PR01,Accessories,Cable Lock,Helmets
+PR02,Accessories,Mountain Bikes,Bike Racks
+PR03,Accessories,Hitch Rack - 4-Bike,Tires and Tubes
+PR04,Accessories,Bike Wash - Dissolver,Hydration Packs
+PR05,Accessories,Hydration Pack - 70 oz.,Bottles and Cages
+PR06,Accessories,"Sport-100 Helmet, Blue",Fenders
+PR07,Accessories,"Sport-100 Helmet, Black",Bike Stands
+PR08,Accessories,"Sport-100 Helmet, Red",Cleaners
+PR09,Accessories,Water Bottle - 30 oz.,Locks
+PR10,Accessories,Patch Kit/8 Patches,Pumps
+PR11,Accessories,Road Tire Tube,Helmets
+PR12,Accessories,Touring Tire Tube,Bike Racks
+PR13,Accessories,Mountain Tire Tube,Tires and Tubes
+PR14,Accessories,Road Bottle Cage,Hydration Packs
+PR15,Accessories,Mountain Bottle Cage,Bottles and Cages
+PR16,Accessories,LL Road Tire,Fenders
+PR17,Accessories,ML Road Tire,Bike Stands
+PR18,Accessories,LL Mountain Tire,Cleaners
+PR19,Accessories,Touring Tire,Locks
+PR20,Accessories,ML Mountain Tire,Pumps
+PR21,Accessories,HL Mountain Tire,Helmets
+PR22,Accessories,All-Purpose Bike Stand,Bike Racks
+PR23,Accessories,HL Road Tire,Tires and Tubes
+PR24,Accessories,Fender Set - Mountain,Hydration Packs
+PR25,Bikes,"Road-650 Red, 44",Road Bikes
+PR26,Bikes,"Touring-3000 Blue, 50",Touring Bikes
+PR27,Bikes,"Touring-3000 Yellow, 62",Touring Bikes
+PR28,Bikes,"Touring-3000 Yellow, 44",Touring Bikes
+PR29,Bikes,"Touring-3000 Blue, 54",Touring Bikes
+PR30,Bikes,"Touring-1000 Yellow, 60",Touring Bikes
+PR31,Bikes,"Touring-3000 Yellow, 50",Touring Bikes
+PR32,Bikes,"Touring-3000 Yellow, 54",Touring Bikes
+PR33,Bikes,"Road-650 Red, 60",Road Bikes
+PR34,Bikes,"Touring-3000 Blue, 58",Touring Bikes
+PR35,Bikes,"Road-650 Black, 52",Road Bikes
+PR36,Bikes,"Touring-1000 Yellow, 46",Touring Bikes
+PR37,Bikes,"Mountain-100 Black, 38",Mountain Bikes
+PR38,Bikes,"Road-650 Black, 58",Road Bikes
+PR39,Bikes,"Touring-3000 Yellow, 58",Touring Bikes
+PR40,Bikes,"Road-650 Red, 62",Road Bikes
+PR41,Bikes,"Road-650 Red, 48",Road Bikes
+PR42,Bikes,"Mountain-100 Silver, 38",Mountain Bikes
+PR43,Bikes,"Road-650 Red, 52",Road Bikes
+PR44,Bikes,"Road-650 Black, 44",Road Bikes
+PR45,Bikes,"Mountain-100 Black, 42",Mountain Bikes
+PR46,Bikes,"Road-550-W Yellow, 48",Road Bikes
+PR47,Bikes,"Road-250 Black, 44",Road Bikes
+PR48,Bikes,"Road-650 Black, 60",Road Bikes
+PR49,Bikes,"Road-450 Red, 58",Road Bikes
+PR50,Bikes,"Road-550-W Yellow, 38",Road Bikes
+PR51,Bikes,"Road-450 Red, 48",Road Bikes
+PR52,Bikes,"Road-450 Red, 52",Road Bikes
+PR53,Bikes,"Road-450 Red, 44",Road Bikes
+PR54,Bikes,"Road-450 Red, 60",Road Bikes
+PR55,Bikes,"Touring-3000 Blue, 44",Touring Bikes
+PR56,Bikes,"Mountain-100 Silver, 42",Mountain Bikes
+PR57,Bikes,"Mountain-100 Black, 44",Mountain Bikes
+PR58,Bikes,"Mountain-100 Silver, 44",Mountain Bikes
+PR59,Bikes,"Mountain-100 Black, 48",Mountain Bikes
+PR60,Bikes,"Road-650 Black, 62",Road Bikes
+PR61,Bikes,"Road-550-W Yellow, 40",Road Bikes
+PR62,Bikes,"Road-650 Black, 48",Road Bikes
+PR63,Bikes,"Road-250 Black, 48",Road Bikes
+PR64,Bikes,"Mountain-500 Silver, 42",Mountain Bikes
+PR65,Bikes,"Road-350-W Yellow, 48",Road Bikes
+PR66,Bikes,"Mountain-100 Silver, 48",Mountain Bikes
+PR67,Bikes,"Touring-2000 Blue, 54",Touring Bikes
+PR68,Bikes,"Mountain-500 Silver, 48",Mountain Bikes
+PR69,Bikes,"Touring-1000 Yellow, 50",Touring Bikes
+PR70,Bikes,"Mountain-500 Silver, 52",Mountain Bikes
+PR71,Bikes,"Road-650 Red, 58",Road Bikes
+PR72,Bikes,"Touring-2000 Blue, 60",Touring Bikes
+PR73,Bikes,"Road-350-W Yellow, 40",Road Bikes
+PR74,Bikes,"Touring-1000 Blue, 60",Touring Bikes
+PR75,Bikes,"Road-250 Black, 52",Road Bikes
+PR76,Bikes,"Mountain-500 Silver, 44",Mountain Bikes
+PR77,Bikes,"Touring-3000 Blue, 62",Touring Bikes
+PR78,Bikes,"Mountain-500 Silver, 40",Mountain Bikes
+PR79,Bikes,"Road-550-W Yellow, 42",Road Bikes
+PR80,Bikes,"Road-250 Black, 58",Road Bikes
+PR81,Bikes,"Road-250 Red, 44",Road Bikes
+PR82,Bikes,"Touring-1000 Blue, 46",Touring Bikes
+PR83,Bikes,"Road-250 Red, 58",Road Bikes
+PR84,Bikes,"Touring-2000 Blue, 46",Touring Bikes
+PR85,Bikes,"Mountain-300 Black, 40",Mountain Bikes
+PR86,Bikes,"Mountain-300 Black, 38",Mountain Bikes
+PR87,Bikes,"Road-750 Black, 48",Road Bikes
+PR88,Bikes,"Mountain-300 Black, 48",Mountain Bikes
+PR89,Bikes,"Mountain-300 Black, 44",Mountain Bikes
+PR90,Bikes,"Road-550-W Yellow, 44",Road Bikes
+PR91,Bikes,"Road-250 Red, 48",Road Bikes
+PR92,Bikes,"Road-350-W Yellow, 42",Road Bikes
+PR93,Bikes,"Road-250 Red, 52",Road Bikes
+PR94,Bikes,"Touring-1000 Blue, 50",Touring Bikes
+PR95,Bikes,"Road-750 Black, 52",Road Bikes
+PR96,Bikes,"Touring-1000 Yellow, 54",Touring Bikes
+PR97,Bikes,"Touring-2000 Blue, 50",Touring Bikes
+PR98,Bikes,"Road-750 Black, 58",Road Bikes
+PR99,Bikes,"Mountain-200 Black, 38",Mountain Bikes
+PR100,Bikes,"Mountain-500 Black, 48",Mountain Bikes
+PR101,Bikes,"Mountain-500 Black, 42",Mountain Bikes
+PR102,Bikes,"Road-350-W Yellow, 44",Road Bikes
+PR103,Bikes,"Mountain-200 Black, 42",Mountain Bikes
+PR104,Bikes,"Mountain-500 Black, 52",Mountain Bikes
+PR105,Bikes,"Touring-1000 Blue, 54",Touring Bikes
+PR106,Bikes,"Mountain-200 Silver, 42",Mountain Bikes
+PR107,Bikes,"Mountain-200 Silver, 38",Mountain Bikes
+PR108,Bikes,"Mountain-500 Black, 44",Mountain Bikes
+PR109,Bikes,"Mountain-200 Silver, 46",Mountain Bikes
+PR110,Bikes,"Mountain-500 Black, 40",Mountain Bikes
+PR111,Bikes,"Mountain-400-W Silver, 40",Mountain Bikes
+PR112,Bikes,"Mountain-200 Black, 46",Mountain Bikes
+PR113,Bikes,"Road-750 Black, 44",Road Bikes
+PR114,Bikes,"Road-150 Red, 56",Road Bikes
+PR115,Bikes,"Road-150 Red, 62",Road Bikes
+PR116,Bikes,"Mountain-400-W Silver, 42",Mountain Bikes
+PR117,Bikes,"Mountain-400-W Silver, 46",Mountain Bikes
+PR118,Bikes,"Mountain-400-W Silver, 38",Mountain Bikes
+PR119,Bikes,"Road-150 Red, 44",Road Bikes
+PR120,Bikes,"Road-150 Red, 52",Road Bikes
+PR121,Bikes,"Road-150 Red, 48",Road Bikes
+PR122,Clothing,"Long-Sleeve Logo Jersey, L",Long-Sleeve
+PR123,Clothing,"Short-Sleeve Classic Jersey, XL",Long-Sleeve
+PR124,Clothing,"Long-Sleeve Logo Jersey, M",Long-Sleeve
+PR125,Clothing,"Short-Sleeve Classic Jersey, L",Long-Sleeve
+PR126,Clothing,"Long-Sleeve Logo Jersey, XL",Long-Sleeve
+PR127,Clothing,"Short-Sleeve Classic Jersey, S",Long-Sleeve
+PR128,Clothing,AWC Logo Cap,Cap
+PR129,Clothing,"Long-Sleeve Logo Jersey, S",Long-Sleeve
+PR130,Clothing,"Short-Sleeve Classic Jersey, M",Short-Sleeve
+PR131,Clothing,"Full-Finger Gloves, L",Gloves
+PR132,Clothing,"Full-Finger Gloves, M",Gloves
+PR133,Clothing,"Women's Tights, S",Tights
+PR134,Clothing,"Women's Tights, L",Tights
+PR135,Clothing,"Men's Bib-Shorts, M",Shorts
+PR136,Clothing,"Men's Sports Shorts, M",Shorts
+PR137,Clothing,"Men's Sports Shorts, S",Shorts
+PR138,Clothing,"Men's Bib-Shorts, S",Shorts
+PR139,Clothing,"Men's Sports Shorts, L",Shorts
+PR140,Clothing,"Women's Tights, M",Tights
+PR141,Clothing,"Men's Bib-Shorts, L",Shorts
+PR142,Clothing,"Full-Finger Gloves, S",Gloves
+PR143,Clothing,"Classic Vest, S",Vest
+PR144,Clothing,"Women's Mountain Shorts, S",Shorts
+PR145,Clothing,"Women's Mountain Shorts, L",Shorts
+PR146,Clothing,"Mountain Bike Socks, M",Socks
+PR147,Clothing,"Racing Socks, L",Socks
+PR148,Clothing,"Classic Vest, M",Vest
+PR149,Clothing,"Mountain Bike Socks, L",Socks
+PR150,Clothing,"Half-Finger Gloves, M",Gloves
+PR151,Clothing,"Racing Socks, M",Socks
+PR152,Clothing,"Half-Finger Gloves, S",Gloves
+PR153,Clothing,"Women's Mountain Shorts, M",Shorts
+PR154,Clothing,"Half-Finger Gloves, L",Gloves
+PR155,Clothing,"Classic Vest, L",Vest
+PR156,Components,"LL Road Frame - Black, 58",Road Frames
+PR157,Components,"ML Road Frame-W - Yellow, 40",Road Frames
+PR158,Components,"LL Road Frame - Black, 44",Road Frames
+PR159,Components,"LL Road Frame - Black, 52",Road Frames
+PR160,Components,"HL Road Frame - Red, 62",Road Frames
+PR161,Components,"HL Road Frame - Red, 44",Road Frames
+PR162,Components,"ML Road Frame-W - Yellow, 44",Road Frames
+PR163,Components,"ML Road Frame-W - Yellow, 48",Road Frames
+PR164,Components,"ML Road Frame-W - Yellow, 38",Road Frames
+PR165,Components,"HL Road Frame - Black, 44",Road Frames
+PR166,Components,"LL Road Frame - Black, 60",Road Frames
+PR167,Components,"HL Road Frame - Black, 48",Road Frames
+PR168,Components,"HL Road Frame - Red, 48",Road Frames
+PR169,Components,"HL Touring Frame - Blue, 60",Touring Frames
+PR170,Components,"LL Touring Frame - Yellow, 62",Touring Frames
+PR171,Components,"HL Touring Frame - Blue, 54",Touring Frames
+PR172,Components,"HL Touring Frame - Yellow, 54",Touring Frames
+PR173,Components,"HL Touring Frame - Yellow, 60",Touring Frames
+PR174,Components,"LL Touring Frame - Yellow, 44",Touring Frames
+PR175,Components,"HL Touring Frame - Yellow, 46",Touring Frames
+PR176,Components,"HL Touring Frame - Blue, 50",Touring Frames
+PR177,Components,"HL Touring Frame - Blue, 46",Touring Frames
+PR178,Components,"HL Touring Frame - Yellow, 50",Touring Frames
+PR179,Components,"LL Touring Frame - Blue, 58",Touring Frames
+PR180,Components,"LL Touring Frame - Blue, 44",Touring Frames
+PR181,Components,"LL Touring Frame - Blue, 62",Touring Frames
+PR182,Components,"LL Touring Frame - Yellow, 50",Touring Frames
+PR183,Components,"LL Touring Frame - Yellow, 58",Touring Frames
+PR184,Components,"LL Touring Frame - Blue, 50",Touring Frames
+PR185,Components,"LL Touring Frame - Blue, 54",Touring Frames
+PR186,Components,"ML Road Frame - Red, 48",Road Frames
+PR187,Components,"ML Road Frame - Red, 52",Road Frames
+PR188,Components,"HL Mountain Frame - Black, 38",Mountain Frames
+PR189,Components,"HL Mountain Frame - Silver, 46",Mountain Frames
+PR190,Components,"HL Mountain Frame - Silver, 38",Mountain Frames
+PR191,Components,"HL Mountain Frame - Black, 42",Mountain Frames
+PR192,Components,"HL Mountain Frame - Silver, 42",Mountain Frames
+PR193,Components,"LL Road Frame - Red, 44",Road Frames
+PR194,Components,"LL Road Frame - Red, 62",Road Frames
+PR195,Components,"LL Road Frame - Red, 60",Road Frames
+PR196,Components,"LL Road Frame - Red, 48",Road Frames
+PR197,Components,"LL Road Frame - Red, 52",Road Frames
+PR198,Components,"LL Mountain Frame - Silver, 42",Mountain Frames
+PR199,Components,"ML Mountain Frame-W - Silver, 40",Mountain Frames
+PR200,Components,"LL Mountain Frame - Silver, 40",Mountain Frames
+PR201,Components,"LL Mountain Frame - Black, 44",Mountain Frames
+PR202,Components,"LL Mountain Frame - Silver, 52",Mountain Frames
+PR203,Components,"LL Mountain Frame - Silver, 44",Mountain Frames
+PR204,Components,"LL Mountain Frame - Silver, 48",Mountain Frames
+PR205,Components,"ML Mountain Frame-W - Silver, 38",Mountain Frames
+PR206,Components,"ML Mountain Frame-W - Silver, 46",Mountain Frames
+PR207,Components,"ML Mountain Frame-W - Silver, 42",Mountain Frames
+PR208,Components,"LL Mountain Frame - Black, 48",Mountain Frames
+PR209,Components,"LL Mountain Frame - Black, 42",Mountain Frames
+PR210,Components,"LL Mountain Frame - Black, 40",Mountain Frames
+PR211,Components,"LL Mountain Frame - Black, 52",Mountain Frames
+PR212,Components,"ML Mountain Frame - Black, 48",Mountain Frames
+PR213,Components,"ML Mountain Frame - Black, 40",Mountain Frames
+PR214,Components,"ML Mountain Frame - Black, 44",Mountain Frames
+PR215,Components,"ML Mountain Frame - Black, 38",Mountain Frames
+PR216,Components,"HL Mountain Frame - Black, 48",Mountain Frames
+PR217,Components,"HL Mountain Frame - Black, 44",Mountain Frames
+PR218,Components,"HL Mountain Frame - Silver, 48",Mountain Frames
+PR219,Components,ML Mountain Handlebars,Mountain Frames
+PR220,Components,LL Mountain Handlebars,Mountain Frames
+PR221,Components,LL Road Handlebars,Handlebars
+PR222,Components,HL Mountain Handlebars,Mountain Frames
+PR223,Components,HL Road Handlebars,Handlebars
+PR224,Components,ML Headset,Handlebars
+PR225,Components,HL Mountain Rear Wheel,Wheels
+PR226,Components,ML Mountain Rear Wheel,Wheels
+PR227,Components,ML Mountain Seat/Saddle,Saddle
+PR228,Components,HL Mountain Pedal,Pedals
+PR229,Components,Front Derailleur,Derailleur
+PR230,Components,Front Brakes,Brakes
+PR231,Components,Chain,Chain
+PR232,Components,HL Crankset,Crankset
+PR233,Components,LL Mountain Seat/Saddle,Saddle
+PR234,Components,HL Fork,Fork
+PR235,Components,LL Mountain Front Wheel,Wheels
+PR236,Components,ML Touring Seat/Saddle,Saddle
+PR237,Components,LL Mountain Pedal,Pedals
+PR238,Components,LL Road Pedal,Pedals
+PR239,Components,LL Touring Handlebars,Handlebars
+PR240,Components,HL Road Seat/Saddle,Saddle
+PR241,Components,HL Mountain Seat/Saddle,Saddle
+PR242,Components,HL Touring Seat/Saddle,Saddle
+PR243,Components,LL Bottom Bracket,Bracket
+PR244,Components,LL Touring Seat/Saddle,Saddle
+PR245,Components,LL Road Seat/Saddle,Saddle
+PR246,Components,ML Road Pedal,Pedals
+PR247,Components,ML Mountain Pedal,Pedals
+PR248,Components,Touring Pedal,Pedals
+PR249,Components,HL Road Pedal,Pedals
+PR250,Components,HL Bottom Bracket,Bracket
+PR251,Components,LL Mountain Rear Wheel,Wheels
+PR252,Components,LL Crankset,Crankset
+PR253,Components,HL Touring Handlebars,Handlebars
+PR254,Components,ML Crankset,Crankset
+PR255,Components,LL Fork,Fork
+PR256,Components,HL Mountain Front Wheel,Wheels
+PR257,Components,ML Mountain Front Wheel,Wheels
+PR258,Components,LL Headset,Headset
+PR259,Components,Rear Brakes,Brakes
+PR260,Components,HL Road Front Wheel,Wheels
+PR261,Components,ML Road Rear Wheel,Wheels
+PR262,Components,HL Headset,Headset
+PR263,Components,Rear Derailleur,Derailleur
+PR264,Components,LL Road Rear Wheel,Wheels
+PR265,Components,ML Road Front Wheel,Wheels
+PR266,Components,HL Road Rear Wheel,Wheels
