@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS DIM_Account (
 
 INSERT INTO DIM_ACCOUNT (ACCOUNT,	"Account Name",	"Customer Flag",	"Employee",	"Sector Industry",	"Open Opportunity")
 SELECT  "Account",	"Account Name",	"Customer Flag",	"Employee",	"Sector Industry",	"Open Opportunity"
-FROM CSVREAD ('demo_data/Account.csv','Account,Account Name,Customer Flag,Employee,Sector Industry,Open Opportunity')
+FROM CSVREAD ('demo/demo_data/Account.csv','Account,Account Name,Customer Flag,Employee,Sector Industry,Open Opportunity')
 WHERE  "Account" != 'Account';
 
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS DIM_Province (
 
 INSERT INTO DIM_PROVINCE  (COUNTRY, NAME, PROVINCE)
 SELECT  "Country", "Name", "Province"
-FROM CSVREAD ('demo_data/Province.csv','Country,Name,Province')
+FROM CSVREAD ('demo/demo_data/Province.csv','Country,Name,Province')
 WHERE  "Province" != 'Province';
 
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS DIM_Product (
 
 INSERT INTO DIM_PRODUCT   (PRODUCT,"Product Name", CATEGORY, SUBCATEGORY )
 SELECT  "Product","Category","Product Name","Subcategory"
-FROM CSVREAD ('demo_data/Product.csv','Product,Category,Product Name,Subcategory')
+FROM CSVREAD ('demo/demo_data/Product.csv','Product,Category,Product Name,Subcategory')
 WHERE  "Product" != 'Product';
 
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS DIM_SCENARIO (
 
 INSERT INTO DIM_SCENARIO   ( SCENARIO , SCENARIO_NAME )
 SELECT "Scenario","Name"
-FROM CSVREAD ('demo_data/Scenario.csv','Scenario,Name')
+FROM CSVREAD ('demo/demo_data/Scenario.csv','Scenario,Name')
 WHERE  "Scenario" != 'Scenario';
 
 CREATE TABLE IF NOT EXISTS DIM_PERIOD (
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS DIM_PERIOD (
 
 INSERT INTO DIM_PERIOD  (PERIOD ,YEAR ,MONTH )
 SELECT  "Period" ,"Year" ,"Month"
-FROM CSVREAD ('demo_data/Period.csv','Period,Year,Month')
+FROM CSVREAD ('demo/demo_data/Period.csv','Period,Year,Month')
 WHERE  "Period" != 'Period';
 
 CREATE TABLE IF NOT EXISTS MEASURE_SET_Sales
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS MEASURE_SET_Sales
 
 INSERT INTO MEASURE_SET_SALES   ( ACCOUNT ,PROVINCE ,PRODUCT ,SCENARIO ,PERIOD ,VALUE_QUANTITY ,VALUE_SALES ,VALUE_COST  )
 SELECT  "Account","Province","Product","Scenario","Period","Quantity","Sales","Cost"
-FROM CSVREAD ('demo_data/Sales.csv','Account,Province,Product,Period,Scenario,Quantity,Sales,Cost')
+FROM CSVREAD ('demo/demo_data/Sales.csv','Account,Province,Product,Period,Scenario,Quantity,Sales,Cost')
 WHERE  "Period" != 'Period';
 
 

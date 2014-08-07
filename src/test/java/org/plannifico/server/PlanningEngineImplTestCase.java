@@ -47,7 +47,7 @@ public class PlanningEngineImplTestCase {
 	Statement stmt = null;
 	
 	private String core_configuration_file = 
-			"/home/ralfano/Documents/plannifico-server/src/test/plannifico-server.xml";
+			"src/test/plannifico-server.xml";
 	
 	@BeforeClass
 	public static void setUpBeforeClass () throws Exception {		

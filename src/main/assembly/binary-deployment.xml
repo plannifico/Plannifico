@@ -26,6 +26,31 @@
 				<include>LICENSE*</include>
 			</includes>
 		</fileSet>
+		
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>demo</outputDirectory>
+			<includes>
+				<include>demo_commands.html</include>				
+				<include>demo_data</include>				
+			</includes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${project.basedir}/demo_data</directory>
+			<outputDirectory>demo/demo_data</outputDirectory>
+			<includes>
+				<include>*.csv</include>
+			</includes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory>demo</outputDirectory>
+			<includes>
+				<include>*demo*</include>
+			</includes>			
+		</fileSet>
 	
 		<fileSet>
 			<directory>${project.basedir}/src/main/java/conf</directory>
@@ -40,20 +65,12 @@
 			<directory>${project.build.scriptSourceDirectory}</directory>
 			<outputDirectory></outputDirectory>
 			<includes>
-				<include>*.bat</include>
+				<include>run.*</include>
 			</includes>
 			<directoryMode>0755</directoryMode>
 			<fileMode>0755</fileMode>
 		</fileSet>
 		
-		<fileSet>
-			<directory>${project.build.scriptSourceDirectory}</directory>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>*.sql</include>
-			</includes>			
-		</fileSet>
-
 		<fileSet>
 			<directory>${project.build.directory}</directory>
 			<outputDirectory>lib</outputDirectory>
