@@ -22,7 +22,8 @@ Running
 -------
 
 Documentation
-----------
+-------------
+<a href="https://github.com/plannifico/Plannifico/wiki/Basic-Concepts---Overall-Design">Basic Concepts</a>
 
 License
 -------
