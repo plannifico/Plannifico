@@ -40,10 +40,18 @@
 			<directory>${project.build.scriptSourceDirectory}</directory>
 			<outputDirectory></outputDirectory>
 			<includes>
-				<include>run.*</include>
+				<include>*.bat</include>
 			</includes>
 			<directoryMode>0755</directoryMode>
 			<fileMode>0755</fileMode>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>*.sql</include>
+			</includes>			
 		</fileSet>
 
 		<fileSet>
