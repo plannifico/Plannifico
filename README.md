@@ -3,6 +3,7 @@ Plannifico
 
 The first open source planning, budgeting and forecasting system based on an open and modular java-based platform.
 
+Plannifico key goals are:
 * Create and analyze sophisticated plans, budgets and forecasts, based on large data sets and complex logics
 * Enable what-if analysis and scenarios simulation on unlimited dimensions (e.g. product, customer)
 * Enable driver-based planning and simulations 
