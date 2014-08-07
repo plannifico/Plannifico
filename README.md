@@ -21,6 +21,19 @@ Components
 Running
 -------
 
+Prerequisite: ensure java 1.7 is installed on your computer (open a command line and run ">java -version")
+
+* Download Plannifico <a href="https://github.com/plannifico/Plannifico/tree/master/dist">here</a>
+* Unzip it into a preferred folder (e.g. plannifico-server-0.1-SNAPSHOT)
+* Open command line console
+* Go into the unzipped folder (e.g. cp plannifico-server-0.1-SNAPSHOT) from your command line
+* Run the following command ">demo\create_demo_db.bat"
+* Run the following command ">run.bat"
+* Wait until the following lines are displyed: "INFO: Initiating Jersey application, version Jersey:..."
+* Go into the folder demo and open the file "demo_command.html" from your preferred browser"
+* Try to click on the "start" link and wait until the following json response appears: "{"statusCode":"0","statusDescription":"Success: server started","content":null}"
+* enjoy!!!
+
 Documentation
 -------------
 <a href="https://github.com/plannifico/Plannifico/wiki/Basic-Concepts---Overall-Design">Basic Concepts</a>
