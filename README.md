@@ -32,7 +32,7 @@ Prerequisite: ensure java >= 1.7 is installed on your computer (open a command l
     * Run the following command ">run.bat"
     * Wait until the following lines are displyed: "INFO: Initiating Jersey application, version Jersey:..."
     * Go into the folder demo and open the file "demo_command.html" from your preferred browser"
-    * Try to click on the "start" link and wait until the following json response appears: "{"statusCode":"0","statusDescription":"Success: server started","content":null}"
+    * Click on the "start" link and wait until the following json response appears: "{"statusCode":"0","statusDescription":"Success: server started","content":null}"
     * enjoy!!!
 
 Documentation
