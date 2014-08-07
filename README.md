@@ -23,6 +23,8 @@ Running
 
 Prerequisite: ensure java >= 1.7 is installed on your computer (open a command line and run ">java -version" command)
 
+Start running a quick demo:
+
 * Download Plannifico <a href="https://github.com/plannifico/Plannifico/tree/master/dist">here</a>
 * Unzip it into a preferred folder (e.g. plannifico-server-0.1-SNAPSHOT)
 * Open command line console
