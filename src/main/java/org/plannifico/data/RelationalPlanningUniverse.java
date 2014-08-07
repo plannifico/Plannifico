@@ -85,7 +85,9 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			while (rs.next()) {
 				
-				dimensions.add (rs.getString ("TABLE_NAME").replace(DIM_PREFIX, ""));
+				String dimension_name = rs.getString ("TABLE_NAME").replace("DIM_", "");
+				
+				dimensions.add (dimension_name);
 			}
 			
 			conn.close();
