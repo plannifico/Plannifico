@@ -1,0 +1,27 @@
+<Plannifico>
+
+	<Server>
+
+		<PlanningUniverses>
+		
+			<Universe>SalesUniverse</Universe>	
+
+		</PlanningUniverses>
+
+		<SalesUniverse>
+			<planningDB>
+	
+				<!--databaseURL>jdbc:h2:tcp://localhost/~/SalesUniverse</databaseURL-->
+				<databaseURL>jdbc:h2:~/SalesUniverse</databaseURL>
+				<dBUser>sa</dBUser>
+
+				<dBPwd></dBPwd>	
+			
+			</planningDB>
+
+			
+		</SalesUniverse>
+		
+	</Server>
+
+</Plannifico>

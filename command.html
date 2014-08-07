@@ -1,0 +1,48 @@
+<html>
+<body>
+
+<p>Administration</p>
+
+<li><a href="http://localhost:9998/plannifico/adm/start">start</a>
+<li><a href="http://localhost:9998/plannifico/adm/stop">stop</a>
+<li><a href="http://localhost:9998/plannifico/adm/getStatus">getStatus</a>
+<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetsCount/SalesUniverse">getMeasureSetsCount/SalesUniverse</a>
+<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetRecordsCount/SalesUniverse/SALES">getMeasureSetRecordsCount/SalesUniverse/Sales</a>
+<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetMeasures/SalesUniverse/SALES">getMeasureSetMeasures/SalesUniverse/Sales</a>
+<li><a href="http://localhost:9998/plannifico/adm/getPlanningDimensions/SalesUniverse/SALES">getPlanningDimensions/SalesUniverse/Sales</a>
+
+<p>Planning Actions</p>
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/getRecordByKey/SalesUniverse/SALES?field=Period:201309&field=Product:PR09&field=Account:A09&field=Province:P11&field=Scenario:1">
+	getRecordByKey/SalesUniverse/SALES?field=Period:201309&field=Product:PR09&field=Account:A09&field=Province:P11&field=Scenario:1
+</a>
+
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual">
+	getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual
+</a>
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual">
+	getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Name:Actual
+</a>
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
+	getAggregatedValue/SalesUniverse/SALES/Quantity Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+</a>
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
+	getRecordsByAggregation/SalesUniverse/SALES Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+</a>
+
+<p>
+<a href="http://localhost:9998/plannifico/planning_action/setAggregatedValue/SalesUniverse/SALES/Quantity/7009?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
+	setAggregatedValue/SalesUniverse/SALES/Quantity/7009 Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+</a>
+
+</body>
+</html>

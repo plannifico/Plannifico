@@ -1,0 +1,78 @@
+<!--
+  release package directory structure:
+    *.tar.gz
+      conf
+        *.xml
+        *.properties
+      lib
+        application jar
+        third party jar dependencies
+      run.sh
+      run.bat
+-->
+<assembly>
+	<id>bin</id>
+		<formats>
+			<format>tar.gz</format>
+		</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>README*</include>
+				<include>LICENSE*</include>
+			</includes>
+		</fileSet>
+	
+		<fileSet>
+			<directory>${project.basedir}/src/main/java/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+			<includes>
+				<include>*.xml</include>
+				<include>*.properties</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>run.*</include>
+			</includes>
+			<directoryMode>0755</directoryMode>
+			<fileMode>0755</fileMode>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>lib</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/doc</directory>
+			<outputDirectory>doc</outputDirectory>
+			<filtered>true</filtered>
+		</fileSet>
+	</fileSets>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<useProjectArtifact>true</useProjectArtifact>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<useTransitiveFiltering>true</useTransitiveFiltering>
+			<unpack>false</unpack>
+			<!--scope>runtime</scope-->
+			<scope>runtime</scope>
+			  <includes>
+			    <include>*:jar</include>
+			  </includes>
+		</dependencySet>
+	</dependencySets>
+</assembly>

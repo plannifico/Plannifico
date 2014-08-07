@@ -1,0 +1,35 @@
+<Plannifico>
+
+	<Server>
+
+		<PlanningUniverses>
+		
+			<Universe>TEST</Universe>	
+
+		</PlanningUniverses>
+
+		<TEST>
+			<planningDB>
+	
+				<!--databaseURL>jdbc:h2:tcp://localhost/~/PLN_UNIVERSE_TEST</databaseURL-->
+				<databaseURL>jdbc:h2:~/PLN_UNIVERSE_TEST</databaseURL>
+				<dBUser>sa</dBUser>
+
+				<dBPwd></dBPwd>	
+			
+			</planningDB>
+
+			<workingDB>
+
+				<databaseURL>jdbc:h2:tcp://localhost/~/PLANNIFICO_WORK_DATA</databaseURL>
+	
+				<dBUser>sa</dBUser>
+
+				<dBPwd></dBPwd>	
+
+			</workingDB>
+		</TEST>
+		
+	</Server>
+
+</Plannifico>
