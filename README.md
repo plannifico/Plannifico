@@ -15,8 +15,8 @@ Components
 ----------
 
 * Plannifico-Server:  Plannifico calculation engine
-* Plannifico-Console: Plannifico administration and calculation console
-* Plannifico-Client:  Plannifico calculation client
+* Plannifico-App: Plannifico client console
+
 
 Running
 -------
@@ -36,7 +36,7 @@ Start running a quick demo:
     * Go into the folder "demo" and open the file "demo_command.html" from your preferred browser"
     * Click on the "start" link and wait until the following json response appears: "{"statusCode":"0","statusDescription":"Success: server started","content":null}"
     * Run other commands in order to explore Plannifico features
-    * See the  RESTful Web APIs documentation in order to run further commands
+    * See the <a href="https://github.com/plannifico/Plannifico/wiki/RESTful Web APIs">RESTful Web APIs</a> documentation in order to run further commands
     * enjoy!!!
 
 Documentation

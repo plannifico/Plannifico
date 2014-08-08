@@ -19,7 +19,7 @@ public class StatusResponse extends ResponseImpl {
 
 	public StatusResponse (int status) {
 		
-		this.engineStatus = "Staus = "+ status;
+		this.engineStatus = ""+ status;
 	}
 			
 	public String getEngineStatus () {		
