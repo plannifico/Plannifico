@@ -1,57 +1,79 @@
 <html>
 <body>
 
-<p>Administration</p>
+<img src="https://raw.githubusercontent.com/plannifico/Plannifico/master/website/img/logo.png"/>
+<h1>Plannifico APIs usage demo</h1>
 
-<li><a href="http://localhost:9998/plannifico/adm/start">start</a>
-<li><a href="http://localhost:9998/plannifico/adm/stop">stop</a>
-<li><a href="http://localhost:9998/plannifico/adm/getStatus">getStatus</a>
+<H2>Administration Commands</h2>
 
-<li><a href="http://localhost:9998/plannifico/adm/getUniverses">getUniverses</a>
+<li>Start the server <a href="http://localhost:9998/plannifico/adm/start">[run]</a>
+<li>Stop the server<a href="http://localhost:9998/plannifico/adm/stop">[run]</a>
+<li>Get Server Status<a href="http://localhost:9998/plannifico/adm/getStatus">[run]</a>
 
-<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetsCount/SalesUniverse">getMeasureSetsCount/SalesUniverse</a>
-<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetsNames/SalesUniverse">getMeasureSetsNames/SalesUniverse</a>
+<li>Get Universes available<a href="http://localhost:9998/plannifico/adm/getUniverses">[run]</a>
 
-<li><a href="http://localhost:9998/plannifico/adm/getPlanningDimensions/SalesUniverse">getPlanningDimensions/SalesUniverse</a>
+<li>Get MeasureSets count in "SalesUniverse"<a href="http://localhost:9998/plannifico/adm/getMeasureSetsCount/SalesUniverse">[run]</a>
+<li>Get MeasureSets names in "SalesUniverse"<a href="http://localhost:9998/plannifico/adm/getMeasureSetsNames/SalesUniverse">[run]</a>
 
-<li><a href="http://localhost:9998/plannifico/adm/getPlanningDimensionRelationship/SalesUniverse/Product/PR09">getPlanningDimensionRelationship/SalesUniverse/Product/PR09</a>
-<li><a href="http://localhost:9998/plannifico/adm/getAllDimensionRelationships/SalesUniverse/Product">getAllDimensionRelationships/SalesUniverse/SalesUniverse/Product</a>
+<li>Get the PlanningDimensions in "SalesUniverse"<a href="http://localhost:9998/plannifico/adm/getPlanningDimensions/SalesUniverse">[run]</a>
 
-<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetRecordsCount/SalesUniverse/SALES">getMeasureSetRecordsCount/SalesUniverse/Sales</a>
-<li><a href="http://localhost:9998/plannifico/adm/getMeasureSetMeasures/SalesUniverse/SALES">getMeasureSetMeasures/SalesUniverse/Sales</a>
+<li>Get all the Product dimension relationships in "SalesUniverse"
+<a href="http://localhost:9998/plannifico/adm/getAllDimensionRelationships/SalesUniverse/Product">	
+		[run]
+</a>
 
+<li>Get the number of planning records for MeasureSet "SALES" in "SalesUniverse"
+<a href="http://localhost:9998/plannifico/adm/getMeasureSetRecordsCount/SalesUniverse/SALES">
+[run]	
+</a>
 
-<p>Planning Actions</p>
+<li>Get the names of the measures contained in MeasureSet "SALES" in "SalesUniverse"
+<a href="http://localhost:9998/plannifico/adm/getMeasureSetMeasures/SalesUniverse/SALES">
+		[run]
+</a>
+
+<h2>Planning Actions</h2>
 
 <p>
+Get the Product "PR09" dimension relationships in "SalesUniverse"
+<a href="http://localhost:9998/plannifico/adm/getPlanningDimensionRelationship/SalesUniverse/Product/PR09">
+		[run]
+</a>
+
+<p>
+Get the PlanningRecord contained in MeasureSet "SALES" in "SalesUniverse" with the following key: Period=201309 Product=PR09 Account=A09 province=P11 Scenario=ACT
 <a href="http://localhost:9998/plannifico/planning_action/getRecordByKey/SalesUniverse/SALES?field=Period:201309&field=Product:PR09&field=Account:A09&field=Province:P11&field=Scenario:ACT">
-	getRecordByKey/SalesUniverse/SALES?field=Period:201309&field=Product:PR09&field=Account:A09&field=Province:P11&field=Scenario:1
+	[run]
 </a>
 
-
 <p>
+Get the PlanningRecords contained in MeasureSet "SALES" in "SalesUniverse" identified by the following query: Year=2013 and Scenario.Scenario_Name=Actual	
 <a href="http://localhost:9998/plannifico/planning_action/getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual">
-	getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual
+	[run]
 </a>
 
 <p>
+Get the aggregated value of the measure "Quantity" contained in MeasureSet "SALES" in "SalesUniverse" identified by the following query: Year=2013 and Scenario.Scenario_Name=Actual
 <a href="http://localhost:9998/plannifico/planning_action/getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Scenario_Name:Actual">
-	getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Name:Actual
+		[run]
 </a>
 
 <p>
+Get the aggregated value of the measure "Quantity" contained in MeasureSet "SALES" in "SalesUniverse" identified by the following query: Year=2013 and Scenario.Scenario_Name=Budget and Product.Subcategory=Mountain Bikes
 <a href="http://localhost:9998/plannifico/planning_action/getAggregatedValue/SalesUniverse/SALES/Quantity?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
-	getAggregatedValue/SalesUniverse/SALES/Quantity Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+	[run]
 </a>
 
 <p>
+Get the PlanningRecords contained in MeasureSet "SALES" in "SalesUniverse" identified by the following query: Year=2013 and Scenario.Scenario_Name=Budget and Product.Subcategory=Mountain Bikes
 <a href="http://localhost:9998/plannifico/planning_action/getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
-	getRecordsByAggregation/SalesUniverse/SALES Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+	[run]
 </a>
 
 <p>
-<a href="http://localhost:9998/plannifico/planning_action/setAggregatedValue/SalesUniverse/SALES/Quantity/7009?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
-	setAggregatedValue/SalesUniverse/SALES/Quantity/7009 Period.Year = 2013 Scenario.Scenario_Name = Budget Product.Subcategory=Mountain Bikes
+Set the value 7009 on the PlanningRecords  in MeasureSet "SALES" in "SalesUniverse" identified by the following query using the default Rounded Proportional logic: Year=2013 and Scenario.Scenario_Name=Budget and Product.Subcategory=Mountain Bikes
+<a href="http://localhost:9998/plannifico/planning_action/setAggregatedValue/SalesUniverse/SALES/Quantity/7009?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes"> 
+	[run]
 </a>
 
 </body>
