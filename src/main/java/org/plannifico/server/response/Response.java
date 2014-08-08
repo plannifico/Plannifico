@@ -27,12 +27,14 @@ public interface Response {
 	 * @param response
 	 * @return
 	 */
-	Response append (Response response);
-	
+	Response append (ResponseContent response);
+
 	/**
-	 * Get the content of the response
+	 * Return a peace of the response
 	 * @return
 	 */
-	public Response getContent ();
+	ResponseContent getContent();
+	
+	
 
 }

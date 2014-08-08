@@ -19,9 +19,9 @@ import java.util.Collection;
 import org.plannifico.data.records.PlanningRecord;
 
 
-public class RecordsCollectionResponse extends ResponseImpl implements Response  {
+public class RecordsCollectionResponse implements ResponseContent  {
 
-	private Collection<Response> responses = new ArrayList<>();
+	private Collection<ResponseContent> responses = new ArrayList<>();
 	
 	public RecordsCollectionResponse (Collection<PlanningRecord> responses) {
 		
@@ -31,7 +31,7 @@ public class RecordsCollectionResponse extends ResponseImpl implements Response 
 		}	
 	}	
 	
-	public Collection <Response> getRecords () {
+	public Collection <ResponseContent> getRecords () {
 		
 		return this.responses;
 	}

@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 package org.plannifico.server.response;
 
-public class StatusResponse extends ResponseImpl {
+public class StatusResponse implements ResponseContent {
 
 	private String engineStatus;
 
@@ -22,7 +22,7 @@ public class StatusResponse extends ResponseImpl {
 		this.engineStatus = ""+ status;
 	}
 			
-	public String getEngineStatus () {		
+	public String getStatus () {		
 		
 		return this.engineStatus;		
 	}

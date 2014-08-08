@@ -64,7 +64,7 @@ public abstract class FactPlanningRecord implements PlanningRecord {
 	@Override
 	public NumberField getMeasureValue (String measure_name) {
 		
-		return (NumberField) measures.get ("VALUE_" + measure_name);
+		return (NumberField) measures.get (measure_name);
 	}
 	
 	@Override

@@ -49,6 +49,7 @@ import org.plannifico.server.response.RecordResponse;
 import org.plannifico.server.response.Response;
 import org.plannifico.server.response.StatusResponse;
 import org.plannifico.server.response.StrCollectionResponse;
+import org.plannifico.server.response.StrMapResponse;
 
 @Path ("/plannifico")
 public class PlannificoRESTListener {

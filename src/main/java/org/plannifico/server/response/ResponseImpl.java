@@ -21,19 +21,21 @@ public class ResponseImpl implements Response {
 	}
 
 	@Override
-	public Response append (Response response) {
+	public Response append (ResponseContent response) {
 		
 		responseContent = response;
 		
 		return this;
 	}
+	
 
 	@Override
-	public Response getContent() {
+	public ResponseContent getContent() {
 		
 		return responseContent;
 	}
 	
-	Response responseContent;
+	
+	ResponseContent responseContent;
 
 }

@@ -16,7 +16,7 @@ package org.plannifico.server.response;
 import java.util.Collection;
 
 
-public class StrCollectionResponse implements Response {
+public class StrCollectionResponse implements ResponseContent {
 
 	private Collection<String> collection;
 	private Response containedResponse = null;
@@ -31,18 +31,4 @@ public class StrCollectionResponse implements Response {
 		return collection;
 	}
 	
-	@Override
-	public Response append(Response response) {
-		
-		containedResponse = response;
-		
-		return this;
-	}
-
-	@Override
-	public Response getContent() {
-		
-		return containedResponse;
-	}
-
 }

@@ -24,12 +24,12 @@ public class BasicResponse extends ResponseImpl {
 		this.message = description;
 	}
 	
-	public String getStatusCode() {
+	public String getResponseCode() {
 		
 		return code;
 	}
 
-	public String getStatusDescription() {
+	public String getResponseDescription() {
 		
 		return message;
 	}

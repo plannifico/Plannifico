@@ -124,11 +124,18 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 							String.format ("populating record with field: %s", 
 									column_name));
 					
-					addField (factory.getTextField (column_name, (String) field));					
+					addField (factory.getTextField (
+							column_name
+								.replace (RelationalMeasureSet.MEASURE_PREFIX, "")
+								.replace (RelationalMeasureSet.DIM_PREFIX, ""), 
+							(String) field));					
 					
 				} else if (field instanceof Number) {
 					
-					addField (factory.getNumberField (rsmd.getColumnName(i), (Double) field));		
+					addField (factory.getNumberField (
+							rsmd.getColumnName(i)
+								.replace (RelationalMeasureSet.MEASURE_PREFIX, ""), 
+							(Double) field));		
 				}
 				
 				

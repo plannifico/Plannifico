@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 package org.plannifico.server.response;
 
-public class NumberResponse extends ResponseImpl implements Response {
+public class NumberResponse implements ResponseContent {
 			
 	public NumberResponse (long number) {
 		

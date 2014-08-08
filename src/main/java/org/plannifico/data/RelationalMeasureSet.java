@@ -49,6 +49,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	
 	public static final String MEASURE_SET_PREFIX = "MEASURE_SET_";
 	public static final String MEASURE_PREFIX = "VALUE_";
+	public static final String DIM_PREFIX = "DIM_";
 	
 	private String name;
 
@@ -57,6 +58,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	private static PlannificoFactory factory;	
 	
 	private final static Logger logger = Logger.getLogger (RelationalMeasureSet.class.getName());
+	
 
 	
 	public RelationalMeasureSet (String planning_universe, String name) {
@@ -553,16 +555,16 @@ public class RelationalMeasureSet implements MeasureSet {
 			
 			if (is_first_where) {
 				
-				where_clause += "DIM_" + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
+				where_clause += DIM_PREFIX + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + "DIM_" + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
+				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
 			
 			join_clause += " JOIN DIM_" + 
 					field_name_components [0] + " on " +
-					"DIM_" + field_name_components [0] + "." + field_name_components [0] + " = " + 
+					DIM_PREFIX + field_name_components [0] + "." + field_name_components [0] + " = " + 
 					MEASURE_SET_PREFIX + measure_set_name + "." + 
 					field_name_components [0];
 		}				
