@@ -156,6 +156,12 @@ public class PlanningEngineImpl implements PlanningEngine {
 	}
 
 	@Override
+	public Collection<String> getUniverses () {
+		
+		return planningUniverses.keySet();
+	}
+	
+	@Override
 	public PlanningRecord getRecordByKey (String universe_name,
 			String measure_set_name, String key)
 			throws WrongPlanningRecordKey {
@@ -239,12 +245,7 @@ public class PlanningEngineImpl implements PlanningEngine {
 				
 		return planningUniverses.get (universe_name).getMeasureSetsNumber();
 	}
-
-	@Override
-	public Collection<String> getUniverses() {
-		
-		return planningUniverses.keySet();
-	}
+	
 
 	@Override
 	public Collection<String> getMeasureSetsNames(String universe_name) {

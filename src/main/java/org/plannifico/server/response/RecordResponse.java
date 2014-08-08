@@ -19,7 +19,7 @@ import org.plannifico.data.records.MissingFieldException;
 import org.plannifico.data.records.PlanningRecord;
 
 
-public class RecordResponse implements Response {
+public class RecordResponse extends ResponseImpl implements Response {
 
 	private PlanningRecord record;
 
@@ -63,17 +63,4 @@ public class RecordResponse implements Response {
 			return  "";
 		}
 	}
-	
-	@Override
-	public Response append (Response response) {
-		
-		return null;
-	}
-
-	@Override
-	public Response getContent() {
-		
-		return null;
-	}
-
 }

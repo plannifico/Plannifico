@@ -26,6 +26,4 @@ public class StatusResponse extends ResponseImpl {
 		
 		return this.engineStatus;		
 	}
-
-
 }

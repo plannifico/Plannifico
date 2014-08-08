@@ -144,8 +144,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 	}
 
 	@Override
-	public PlanningRecord getRecordByKey(String measure_set_name, String key)
-			throws WrongPlanningRecordKey {		
+	public PlanningRecord getRecordByKey(String measure_set_name, String key) throws WrongPlanningRecordKey {		
 		
 		return measureSets.get(measure_set_name).getRecordByKey(key);
 	}

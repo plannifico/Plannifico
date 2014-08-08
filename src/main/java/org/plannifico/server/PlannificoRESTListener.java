@@ -41,10 +41,11 @@ import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.configuration.XMLBasedConfigurationManager;
 import org.plannifico.server.executors.GetAggregatedValueExecutor;
 import org.plannifico.server.executors.GetRecordsByAggregationExecutor;
-import org.plannifico.server.executors.GetRecordsByKeyExecutor;
+import org.plannifico.server.executors.GetRecordByKeyExecutor;
 import org.plannifico.server.executors.setAggregatedValueExecutor;
 import org.plannifico.server.response.BasicResponse;
 import org.plannifico.server.response.NumberResponse;
+import org.plannifico.server.response.RecordResponse;
 import org.plannifico.server.response.Response;
 import org.plannifico.server.response.StatusResponse;
 import org.plannifico.server.response.StrCollectionResponse;
@@ -126,17 +127,6 @@ public class PlannificoRESTListener {
 	}
 	
 	@GET
-	@Path("/adm/load")
-	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Response load () {
-		
-		logger.log (Level.FINE, "Received /load");	
-		
-		
-		return new BasicResponse("0","Success");
-	}
-	
-	@GET
 	@Path("/adm/getStatus")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public org.plannifico.server.response.Response getStatus () {
@@ -147,6 +137,21 @@ public class PlannificoRESTListener {
 			.append(new StatusResponse(engine.getStatus ()));
 	
 										
+	}
+	
+	@GET
+	@Path("/adm/getUniverses")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getUniverses () {
+		
+		logger.log (Level.FINE, "Received /getUniverses");	
+				
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");			
+		
+		return new BasicResponse("0","Success")
+			.append(new StrCollectionResponse(engine.getUniverses()));										
 	}
 	
 	@GET
@@ -167,6 +172,80 @@ public class PlannificoRESTListener {
 			.append(new NumberResponse (result));										
 	}
 	
+	@GET
+	@Path("/adm/getMeasureSetsNames/{universe_name}")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getMeasureSetsNames (
+			@PathParam("universe_name") final String universe_name) {
+		
+		logger.log (Level.FINE, "Received /getMeasureSetsNames");	
+				
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");			
+			
+		return new BasicResponse("0","Success")
+			.append(new StrCollectionResponse (engine.getMeasureSetsNames (universe_name)));										
+	}
+	
+	@GET
+	@Path("/adm/getPlanningDimensionRelationship/{universe_name}/{dimension}/{key}")
+	@Consumes("text/plain")  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getPlanningDimensionRelationship (
+			@PathParam("universe_name") final String universe_name,
+			@PathParam("dimension") final String dimension,
+			@PathParam("key") final String key) {
+				
+		logger.log (Level.FINE, "Received /getPlanningDimensionRelationship");	
+		
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		if ((universe_name == null) || (dimension == null) || (key == null))
+			return new BasicResponse ("1","Error: Missing param.");
+		
+		try {
+					
+			return new BasicResponse("0","Success")
+				.append(new StrCollectionResponse(
+						engine.getPlanningDimensionRelationship (universe_name, dimension, key)));
+		
+		} catch (UniverseNotExistException e) {
+		
+			return new BasicResponse ("1", String.format("Error: Universe %s does not exist)",universe_name));
+		}										
+	}
+	
+	@GET
+	@Path("/adm/getAllDimensionRelationships/{universe_name}/{dimension}")
+	@Consumes("text/plain")  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getPlanningDimensionRelationship (
+			@PathParam("universe_name") final String universe_name,
+			@PathParam("dimension") final String dimension) {
+				
+		logger.log (Level.FINE, "Received /getAllDimensionRelationships");	
+		
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		if ((universe_name == null) || (dimension == null))
+			return new BasicResponse ("1","Error: Missing param.");
+		
+		try {
+					
+			return new BasicResponse("0","Success")
+				.append(new StrMapResponse(
+						engine.getAllDimensionRelationships (universe_name, dimension)));
+		
+		} catch (UniverseNotExistException e) {
+		
+			return new BasicResponse ("1", String.format("Error: Universe %s does not exist)",universe_name));
+		}										
+	}
 	
 	@GET
 	@Path("/adm/getMeasureSetRecordsCount/{universe_name}/{measure_set}")
@@ -262,8 +341,6 @@ public class PlannificoRESTListener {
 	
 	
 	
-	//CALCULATION METHODS
-	
 	@GET
 	@Path("/planning_action/getRecordByKey/{universe_name}/{measure_set}")
 	@Consumes(javax.ws.rs.core.MediaType.TEXT_PLAIN)  
@@ -281,7 +358,7 @@ public class PlannificoRESTListener {
 					"Error: the server is not started.");
 			
 	    Callable<Response> callable = 
-	    		new GetRecordsByKeyExecutor (engine, 
+	    		new GetRecordByKeyExecutor (engine, 
 	    				universe_name, 
 	    				measure_set, 
 	    				Utils.listToStringQuery (fields));
@@ -290,7 +367,9 @@ public class PlannificoRESTListener {
 	
 	    try {
 		
-	    	return future.get();
+	    	Response resp = future.get();
+	    	
+	    	return resp;
 		
 	    } catch (InterruptedException | ExecutionException e) {
 			

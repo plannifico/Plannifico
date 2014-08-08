@@ -19,33 +19,20 @@ import java.util.Collection;
 import org.plannifico.data.records.PlanningRecord;
 
 
-public class RecordCollectionResponse implements Response {
+public class RecordsCollectionResponse extends ResponseImpl implements Response  {
 
-	private Collection<RecordResponse> records = new ArrayList<>();
-
-	public RecordCollectionResponse (Collection<PlanningRecord> records) {
-		
-		for(PlanningRecord record: records) {
-			
-			this.records.add (new RecordResponse(record));
-		}
-	}
+	private Collection<Response> responses = new ArrayList<>();
 	
-	public Collection <RecordResponse> getRecords () {
+	public RecordsCollectionResponse (Collection<PlanningRecord> responses) {
 		
-		return this.records;
+		for (PlanningRecord record: responses) {
+			
+			this.responses.add (new RecordResponse(record));
+		}	
+	}	
+	
+	public Collection <Response> getRecords () {
+		
+		return this.responses;
 	}
-
-	@Override
-	public Response append (Response response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Response getContent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

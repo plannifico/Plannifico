@@ -17,7 +17,7 @@ import org.plannifico.data.fields.PlanningField;
 import org.plannifico.data.fields.WrongFieldTypeException;
 import org.plannifico.data.WrongPlanDataFieldTypeException;
 
-public class FieldResponse implements Response {
+public class FieldResponse extends ResponseImpl implements Response {
 
 	private PlanningField resultField;
 
@@ -36,16 +36,5 @@ public class FieldResponse implements Response {
 		return String.valueOf(resultField.getNumberValue());
 	}
 	
-	@Override
-	public Response append(Response response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Response getContent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

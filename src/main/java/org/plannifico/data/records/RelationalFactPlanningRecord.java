@@ -76,11 +76,15 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 			
 			ResultSet rels_rs = stmt.executeQuery();
 			
+			if (rels_rs.isAfterLast()) 
+				throw new WrongPlanningRecordKey ("No record found for the given key");
+			
 			while (rels_rs.next ()) {				
 				 
 				populatePlanningRecordFromResultSet (rels_rs);				
 				
-				if (!rels_rs.isLast()) throw new WrongPlanningRecordKey ();
+				if (!rels_rs.isLast()) 
+					throw new WrongPlanningRecordKey ("More than one record returned");
 			}			
 			
 		} catch (SQLException e) {

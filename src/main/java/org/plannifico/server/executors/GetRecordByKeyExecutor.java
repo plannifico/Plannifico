@@ -14,24 +14,28 @@ limitations under the License.*/
 package org.plannifico.server.executors;
 
 import java.util.concurrent.Callable;
+import java.util.logging.Logger;
 
 import org.plannifico.data.WrongPlanningRecordKey;
 import org.plannifico.data.fields.NullField;
 import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.server.PlanningEngine;
+import org.plannifico.server.PlanningEngineImpl;
 import org.plannifico.server.response.BasicResponse;
 import org.plannifico.server.response.RecordResponse;
 import org.plannifico.server.response.Response;
 
 
-public class GetRecordsByKeyExecutor implements Callable<Response> {
+public class GetRecordByKeyExecutor implements Callable<Response> {
 
+	private final static Logger logger = Logger.getLogger (GetRecordByKeyExecutor.class.getName());
+	
 	private PlanningEngine calcEngine;
 	private String universeName;
 	private String measureSet;
 	private String query;
 	
-	public GetRecordsByKeyExecutor (
+	public GetRecordByKeyExecutor (
 			PlanningEngine engine, 
 			String universe_name, 
 			String measure_set, 
@@ -55,7 +59,9 @@ public class GetRecordsByKeyExecutor implements Callable<Response> {
 			
 			result = calcEngine.getRecordByKey (universeName, measureSet, query);
 			
-			if (result instanceof NullField)
+			logger.info ("Record received " + result);
+			
+			if (result instanceof NullRecord)
 				return new BasicResponse ("1", String.format("Error: see log for details"));
 				
 			else

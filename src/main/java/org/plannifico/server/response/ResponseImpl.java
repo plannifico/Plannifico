@@ -34,13 +34,6 @@ public class ResponseImpl implements Response {
 		return responseContent;
 	}
 	
-	/*
-	@Override
-	public String toString() {
-		return "";//"BasicResponse [code=" + code + ", message=" + message + "]";
-	}
-	 */
-	
 	Response responseContent;
 
 }

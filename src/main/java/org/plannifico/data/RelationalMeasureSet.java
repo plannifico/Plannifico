@@ -37,6 +37,7 @@ import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.ActionNotPermittedException;
 import org.plannifico.server.ConnectionPoolProvider;
 import org.plannifico.server.H2ConnectionPoolProvider;
+import org.plannifico.server.executors.NullRecord;
 
 /**
  * A {@link MeasureSet} implementation based on a relational database
@@ -111,14 +112,24 @@ public class RelationalMeasureSet implements MeasureSet {
 	
 	
 	@Override
-	public PlanningRecord getRecordByKey (String key) 
-			throws WrongPlanningRecordKey { 
+	public PlanningRecord getRecordByKey (String key) { 
+		
+		logger.fine ("Received getRecordByKey " + key);
 
 		PlannificoFactory factory = PlannificoFactoryProvider.getInstance();
 		
 		PlanningRecord record = factory.getFactPlanningRecord (this.planningUniverse, this.name);
 		
-		record.populateRecordByKey (key);
+		try {
+		
+			record.populateRecordByKey (key);
+		
+		} catch (WrongPlanningRecordKey e) {
+			
+			logger.warning ("Received WrongPlanningRecordKey " + e.getMessage());
+			
+			return new NullRecord();
+		}
 				
 		return record;
 	}

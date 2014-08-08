@@ -15,4 +15,9 @@ package org.plannifico.data;
 
 public class WrongPlanningRecordKey extends Exception {
 
+	public WrongPlanningRecordKey(String msg) {
+		
+		super(msg);
+	}
+
 }

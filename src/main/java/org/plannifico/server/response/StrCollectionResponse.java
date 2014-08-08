@@ -19,6 +19,7 @@ import java.util.Collection;
 public class StrCollectionResponse implements Response {
 
 	private Collection<String> collection;
+	private Response containedResponse = null;
 
 	public StrCollectionResponse (Collection <String> collection) {
 		
@@ -32,14 +33,16 @@ public class StrCollectionResponse implements Response {
 	
 	@Override
 	public Response append(Response response) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		containedResponse = response;
+		
+		return this;
 	}
 
 	@Override
 	public Response getContent() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return containedResponse;
 	}
 
 }

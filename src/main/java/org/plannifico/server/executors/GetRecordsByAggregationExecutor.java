@@ -24,7 +24,7 @@ import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.server.ActionNotPermittedException;
 import org.plannifico.server.PlanningEngine;
 import org.plannifico.server.response.BasicResponse;
-import org.plannifico.server.response.RecordCollectionResponse;
+import org.plannifico.server.response.RecordsCollectionResponse;
 import org.plannifico.server.response.RecordResponse;
 import org.plannifico.server.response.Response;
 
@@ -66,7 +66,7 @@ public class GetRecordsByAggregationExecutor implements Callable<Response> {
 				return new BasicResponse ("1", String.format("Error: see log for details"));
 				
 			else
-				return new BasicResponse ("0","Success").append (new RecordCollectionResponse (result));
+				return new BasicResponse ("0","Success").append (new RecordsCollectionResponse (result));
 			
 		} catch (ActionNotPermittedException e) {
 			

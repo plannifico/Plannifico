@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 package org.plannifico.server.response;
 
-public class NumberResponse implements Response {
+public class NumberResponse extends ResponseImpl implements Response {
 			
 	public NumberResponse (long number) {
 		
@@ -23,18 +23,6 @@ public class NumberResponse implements Response {
 	public long getNumber () {
 		
 		return number;
-	}
-
-	@Override
-	public Response append(Response response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Response getContent() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 
