@@ -10,6 +10,8 @@ Plannifico key goals are:
 * Combine bottom-up and top-down planning
 * Support easy data-integration
 * Scale to millions of records
+
+Find further information <a href="http://plannifico.github.io/" target="_blank">here</a>
  
 Components
 ----------
