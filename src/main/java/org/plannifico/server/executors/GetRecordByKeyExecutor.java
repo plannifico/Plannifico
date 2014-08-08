@@ -61,13 +61,22 @@ public class GetRecordByKeyExecutor implements Callable<Response> {
 			
 			logger.info ("Record received " + result);
 			
-			if (result instanceof NullRecord)
-				return new BasicResponse ("1", String.format("Error: see log for details"));
+			if (result instanceof NullRecord) {
 				
-			else
+				logger.info ("result instanceof NullRecord");
+				
+				return new BasicResponse ("1", String.format("No record found"));
+			}				
+			else {
+				
+				logger.info ("result NOT instanceof NullRecord");
 				return new BasicResponse ("0","Success").append (new RecordResponse (result));
+			}
+				
 			
 		} catch (WrongPlanningRecordKey e) {
+			
+			logger.warning ("WrongPlanningRecordKey " + e.getMessage());
 			
 			return new BasicResponse ("1", 
 					String.format("Error: Wrong Planning Record Key"));

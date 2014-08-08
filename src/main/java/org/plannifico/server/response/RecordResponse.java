@@ -14,7 +14,13 @@ limitations under the License.*/
 package org.plannifico.server.response;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.plannifico.data.fields.PlanningField;
+import org.plannifico.data.fields.WrongFieldTypeException;
 import org.plannifico.data.records.MissingFieldException;
 import org.plannifico.data.records.PlanningRecord;
 
@@ -28,39 +34,44 @@ public class RecordResponse extends ResponseImpl implements Response {
 		this.record = record;
 	}
 	
-	public String getFields () {
+	public Collection<Map<String,String>> getAttributes () {
 		
-		String response = "";
+		Collection<Map<String,String>> response = new ArrayList<>();
 		
 		for (PlanningField field : record.getFields()) {
 			
-			response = response += (field.getKey() + "=" +field.getValue()) + ";";
+			Map <String,String> field_map = new HashMap<>();
+			
+			field_map.put(field.getKey(), field.getValue());
+			
+			response.add (field_map);
 		}
 		
-		return response.substring(0,response.length()-1);
+		return response;
 	}
 	
-	public String getMeasures () {
+	public Collection<Map<String,Double>> getMeasures () {
 				
-		String response = "";
+		Collection<Map<String,Double>> response = new ArrayList<>();
 		
 		for (PlanningField field : record.getMeasures()) {
 			
-			response = response = response += (field.getKey() + "=" +field.getValue()) + ";";
+			Map <String,Double> field_map = new HashMap<>();
+			
+			try {
+				
+				field_map.put(field.getKey(), field.getNumberValue());
+				
+			} catch (WrongFieldTypeException e) {
+				
+				field_map.put("Null", new Double (-1));
+			}
+			
+			response.add (field_map);
 		}
 		
-		return response.substring(0,response.length()-1);
+		return response;
 	}
 	
-	public String getRecordKey () {
-		
-		try {
-			
-			return record.getRecordKey();
-		
-		} catch (MissingFieldException e) {
-			
-			return  "";
-		}
-	}
+	
 }

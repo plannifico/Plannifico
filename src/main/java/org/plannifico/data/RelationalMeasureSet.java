@@ -123,6 +123,8 @@ public class RelationalMeasureSet implements MeasureSet {
 		try {
 		
 			record.populateRecordByKey (key);
+			
+			logger.fine ("record populated " + record.getColumnNumber());
 		
 		} catch (WrongPlanningRecordKey e) {
 			

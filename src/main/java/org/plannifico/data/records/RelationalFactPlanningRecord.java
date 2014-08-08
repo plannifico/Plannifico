@@ -20,6 +20,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.plannifico.PlannificoFactory;
 import org.plannifico.PlannificoFactoryProvider;
@@ -31,6 +32,8 @@ import org.plannifico.server.ConnectionPoolProvider;
 import org.plannifico.server.H2ConnectionPoolProvider;
 
 public class RelationalFactPlanningRecord extends FactPlanningRecord {
+	
+	private final static Logger logger = Logger.getLogger (RelationalMeasureSet.class.getName());
 
 	public RelationalFactPlanningRecord (String universe, String measure_set) {
 		
@@ -76,10 +79,12 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 			
 			ResultSet rels_rs = stmt.executeQuery();
 			
-			if (rels_rs.isAfterLast()) 
+			//logger.fine ("is first record: " + rels_rs.first());
+			
+			if (!rels_rs.first()) 
 				throw new WrongPlanningRecordKey ("No record found for the given key");
 			
-			while (rels_rs.next ()) {				
+			else {				
 				 
 				populatePlanningRecordFromResultSet (rels_rs);				
 				
