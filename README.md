@@ -41,8 +41,9 @@ Start running a quick demo:
 
 Documentation
 -------------
-<a href="https://github.com/plannifico/Plannifico/wiki/Basic-Concepts---Overall-Design">Basic Concepts</a>
-<a href="https://github.com/plannifico/Plannifico/wiki/RESTful Web APIs">RESTful Web APIs</a>
+* <a href="https://github.com/plannifico/Plannifico/wiki/Basic-Concepts---Overall-Design">Basic Concepts</a>
+
+* <a href="https://github.com/plannifico/Plannifico/wiki/RESTful Web APIs">RESTful Web APIs</a>
 
 License
 -------
