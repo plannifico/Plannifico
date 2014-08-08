@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import org.plannifico.data.WrongPlanningRecordKey;
 import org.plannifico.data.fields.NullField;
+import org.plannifico.data.records.NullRecord;
 import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.server.PlanningEngine;
 import org.plannifico.server.PlanningEngineImpl;

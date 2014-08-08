@@ -11,7 +11,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-package org.plannifico.server.executors;
+package org.plannifico.data.records;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,9 +20,6 @@ import org.plannifico.data.WrongPlanningRecordKey;
 import org.plannifico.data.fields.NullField;
 import org.plannifico.data.fields.NumberField;
 import org.plannifico.data.fields.PlanningField;
-import org.plannifico.data.records.FieldAlreadyExistsException;
-import org.plannifico.data.records.MissingFieldException;
-import org.plannifico.data.records.PlanningRecord;
 
 public class NullRecord implements PlanningRecord {
 

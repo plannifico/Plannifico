@@ -227,13 +227,13 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			DatabaseMetaData md = conn.getMetaData();
 			
-			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension, new String [] {"TABLE"});
+			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
 			
 			if (!rs.next()) return rels;
 			
-			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension));
+			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
 			
-			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension, null);
+			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
 			
 			int i=1;
 			
@@ -251,7 +251,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			PreparedStatement stmt = 
 					conn.prepareStatement (
 							"SELECT " + cols + "1" +
-							" FROM DIM_" + dimension);
+							" FROM DIM_" + dimension.toUpperCase());
 			
 			ResultSet rels_rs = stmt.executeQuery();
 			
@@ -263,7 +263,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 				Collection<String> attrs = new ArrayList<>();
 				
-				String key = rels_rs.getString (dimension);
+				String key = rels_rs.getString (dimension.toUpperCase());
 				
 				int col = 1;
 				
@@ -306,13 +306,13 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			DatabaseMetaData md = conn.getMetaData();
 			
-			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension, new String [] {"TABLE"});
+			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
 			
 			if (!rs.next()) return rels;
 			
-			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension));
+			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
 			
-			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension, null);
+			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
 			
 			int i=1;
 			
@@ -324,8 +324,8 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 				
 				PreparedStatement stmt = 
 						conn.prepareStatement (
-								"SELECT " + col +  
-								" FROM DIM_" + dimension + 
+								"SELECT *" +  
+								" FROM DIM_" + dimension.toUpperCase() + 
 								" WHERE " +dimension + " = '"+ dimension_key + "'");
 				
 				ResultSet rels_rs = stmt.executeQuery();
@@ -335,10 +335,8 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 					String rel = rels_rs.getString (col);
 					
 					rels.add (col + "=" + rel);
-				}
-					
-			}
-			
+				}					
+			}			
 		
 		} catch (SQLException e) {
 			

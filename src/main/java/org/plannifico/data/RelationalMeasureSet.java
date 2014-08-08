@@ -29,6 +29,7 @@ import org.plannifico.PlannificoFactory;
 import org.plannifico.PlannificoFactoryProvider;
 import org.plannifico.data.fields.PlanningField;
 import org.plannifico.data.fields.WrongFieldTypeException;
+import org.plannifico.data.records.NullRecord;
 import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.data.records.RelationalFactPlanningRecord;
 import org.plannifico.logic.LogicCalculationException;
@@ -37,7 +38,6 @@ import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.ActionNotPermittedException;
 import org.plannifico.server.ConnectionPoolProvider;
 import org.plannifico.server.H2ConnectionPoolProvider;
-import org.plannifico.server.executors.NullRecord;
 
 /**
  * A {@link MeasureSet} implementation based on a relational database
