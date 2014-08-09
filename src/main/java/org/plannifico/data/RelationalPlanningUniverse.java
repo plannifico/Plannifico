@@ -241,7 +241,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			while (rs.next()) {			
 				
-				String col = rs.getString ("COLUMN_NAME");
+				String col = "\"" + rs.getString ("COLUMN_NAME") + "\"";
 				
 				logger.fine (String.format ("Retrived column: %s", col));
 				
