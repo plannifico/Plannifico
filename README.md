@@ -16,7 +16,7 @@ Find further information <a href="http://plannifico.github.io/" target="_blank">
 Version 0.2
 -----------
 
-*Minor APIs fixes
+* Minor APIs fixes
  
 Components
 ----------
