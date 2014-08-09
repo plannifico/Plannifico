@@ -12,6 +12,11 @@ Plannifico key goals are:
 * Scale to millions of records
 
 Find further information <a href="http://plannifico.github.io/" target="_blank">here</a>
+
+Version 0.2
+-----------
+
+*Minor APIs fixes
  
 Components
 ----------
