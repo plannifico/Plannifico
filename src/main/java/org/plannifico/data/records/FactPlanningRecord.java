@@ -32,7 +32,7 @@ import org.plannifico.data.fields.TextField;
 
 public abstract class FactPlanningRecord implements PlanningRecord {
 
-	protected Map<String, PlanningField> fields = new HashMap <> ();
+	protected Map<String, PlanningField> attributes = new HashMap <> ();
 	protected Map<String, PlanningField> measures = new HashMap <> ();
 
 	protected String universeName;
@@ -50,15 +50,21 @@ public abstract class FactPlanningRecord implements PlanningRecord {
 	}
 	
 	@Override
-	public Collection<PlanningField> getFields () {
+	public Collection<PlanningField> getAttributes () {
 
-		return fields.values();
+		return attributes.values();
 	}
 
 	@Override
 	public Collection<PlanningField> getMeasures() {
 
 		return measures.values();
+	}
+	
+	@Override
+	public PlanningField getAttributeValue (String attribute_name) {
+		
+		return attributes.get (attribute_name);
 	}
 
 	@Override
@@ -76,18 +82,18 @@ public abstract class FactPlanningRecord implements PlanningRecord {
 	@Override
 	public int getColumnNumber() {
 
-		return fields.size();
+		return attributes.size();
 	}
 
 	@Override
 	public void addField (PlanningField field)
 			throws FieldAlreadyExistsException {
 
-		if (fields.containsKey (field.getKey()))
+		if (attributes.containsKey (field.getKey()))
 			throw new FieldAlreadyExistsException();
 
 		if (field instanceof TextField)
-			fields.put (field.getKey(), field);
+			attributes.put (field.getKey(), field);
 
 		else if (field instanceof NumberField)
 			measures.put (field.getKey(), field);
@@ -97,7 +103,7 @@ public abstract class FactPlanningRecord implements PlanningRecord {
 	public void updateFieldValue(PlanningField field)
 			throws MissingFieldException {
 
-		if (!fields.containsKey(field.getKey()))
+		if (!attributes.containsKey(field.getKey()))
 			throw new MissingFieldException();
 
 	}

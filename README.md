@@ -18,6 +18,12 @@ Version 0.2
 
 * Minor APIs fixes
  
+Version 0.3
+-----------
+
+* Added method "GetDataset" to the APIs
+ 
+
 Components
 ----------
 

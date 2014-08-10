@@ -38,7 +38,7 @@ public class RecordResponse implements ResponseContent {
 		
 		Collection<Map<String,String>> response = new ArrayList<>();
 		
-		for (PlanningField field : record.getFields()) {
+		for (PlanningField field : record.getAttributes()) {
 			
 			Map <String,String> field_map = new HashMap<>();
 			

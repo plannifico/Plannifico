@@ -28,6 +28,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.plannifico.PlannificoFactory;
 import org.plannifico.PlannificoFactoryProvider;
+import org.plannifico.data.PlanningSet;
 import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.data.WrongPlanningRecordKey;
 import org.plannifico.data.fields.NumberField;
@@ -58,7 +59,14 @@ public class PlanningEngineImplTestCase {
 				DriverManager.getConnection(
 						"jdbc:h2:~/PLN_UNIVERSE_TEST", 
 						"sa", 
-						"");		
+						"");
+		
+		/*
+		conn = 
+				DriverManager.getConnection(
+						"jdbc:h2:tcp://localhost/~/PLN_UNIVERSE_TEST", 
+						"sa", 
+						"");*/		
 	}
 	
 	@Before
@@ -206,7 +214,7 @@ public class PlanningEngineImplTestCase {
 		PlanningRecord record = 
 				engine.getRecordByKey ("TEST", "MSET1", "AAAA=AAAA2;BBB=BBB5;CCC=CCC4");
 		
-		Collection<PlanningField> fields = record.getFields();
+		Collection<PlanningField> fields = record.getAttributes();
 
 		String BB3 = "";
 		String C12 = "";
@@ -297,7 +305,8 @@ public class PlanningEngineImplTestCase {
 
 	
 	@Test
-	public void testGetRecordsByAggregation () throws ActionNotPermittedException, WrongFieldTypeException, ServerAlreadyRunningException {
+	public void testGetRecordsByAggregation () 
+			throws ActionNotPermittedException, WrongFieldTypeException, ServerAlreadyRunningException {
 		/*
 		SELECT * 
 		FROM MEASURE_SET_MSET1 M 
@@ -352,6 +361,54 @@ public class PlanningEngineImplTestCase {
 		//for (PlanningEngine)
 		
 		assertEquals (102, field.getNumberValue(),0);
+		
+		engine.stop ();
+	}
+	
+	@Test
+	public void testGetPlanningSet () 
+			throws ActionNotPermittedException, ServerAlreadyRunningException, UniverseNotExistException {
+		
+		engine.start(core_configuration_file);
+				
+		/*
+		SELECT D_A.AA, D_C.CC, SUM(VALUE_M1) as M1, SUM(VALUE_M2) as M2
+		FROM MEASURE_SET_MSET1 M 
+		join DIM_AAAA D_A on D_A.AAAA = M.AAAA 
+		join DIM_BBB D_B on D_B.BBB = M.BBB
+		join DIM_CCC D_C on D_C.CCC = M.CCC
+		WHERE D_B.BB = 'BB1' and D_A.A = 'A2'
+		GROUP BY D_A.AA, D_C.CC
+		*/
+		
+		PlanningSet data_set = 
+				engine.getDataSet ("TEST", "MSET1", "M1;M2", "AAAA.A=A2;BBB.BB=BB1", "AAAA.AA;CCC.CC");
+			
+		Collection <PlanningRecord> dataset = data_set.getData();
+		
+		String AA = "";
+		String CC = "";
+		double M1 = 0;
+		double M2 = 0;
+		
+		for (PlanningRecord record: dataset) {
+			
+			AA += record.getAttributeValue ("AA").getValue() + ":";
+			CC += record.getAttributeValue ("CC").getValue() + ":";
+			
+			M1 += record.getMeasureValue ("M1").getNumberValue();
+			M2 += record.getMeasureValue ("M2").getNumberValue();
+		}
+		
+		assertEquals ("4_102.0_247.0_true_true_true_true_true_true", dataset.size() + "_" + 
+				M1 + "_" + 
+				M2 + "_" + 
+				AA.contains("AA3") + "_" +
+				AA.contains("AA2") + "_" +
+				CC.contains("CC9") + "_" +
+				CC.contains("CC3") + "_" +
+				CC.contains("CC1") + "_" +
+				CC.contains("CC8"));
 		
 		engine.stop ();
 	}

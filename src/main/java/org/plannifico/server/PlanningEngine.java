@@ -17,6 +17,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
+import org.plannifico.data.MeasureSet;
+import org.plannifico.data.PlanningSet;
+import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.data.WrongPlanningRecordKey;
 import org.plannifico.data.fields.PlanningField;
@@ -235,5 +238,26 @@ public interface PlanningEngine {
 	public Map<String, Collection<String>> getAllDimensionRelationships (
 			String universe,
 			String dimension) throws UniverseNotExistException;
+
+	
+	/**
+	 * Return a planning set calculated on the {@link MeasureSet} of the given {@link PlanningUniverse}
+	 * aggregating the given measures by the given groupby fields filtering the records on the
+	 * given filter
+	 * 
+	 * @param universe
+	 * @param measureset
+	 * @param measures
+	 * @param filter
+	 * @param groupby
+	 * @return
+	 * @throws UniverseNotExistException 
+	 */
+	public PlanningSet getDataSet (
+		String universe, 
+		String measureset,
+		String measures, 
+		String filter, 
+		String groupby) throws UniverseNotExistException;
 		
 }

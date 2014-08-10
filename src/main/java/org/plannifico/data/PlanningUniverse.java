@@ -175,6 +175,23 @@ public interface PlanningUniverse {
 	 * @return
 	 */
 	public Map<String, Collection<String>> getAllDimensionRelationships (String dimension);
+	
+	
+	
+	/**
+	 * Return a planning set calculated on the {@link MeasureSet}
+	 * aggregating the given measures by the given groupby fields filtering the records on the
+	 * given filter
+	 * 
+	 * @param universe
+	 * @param measureset
+	 * @param measures
+	 * @param filter
+	 * @param groupby
+	 * @return
+	 */
+	public PlanningSet getDataSet(String measureset, String measures,
+			String filter, String groupby);
 
 	
 

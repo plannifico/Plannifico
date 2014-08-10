@@ -120,6 +120,18 @@ public interface MeasureSet {
 	 */
 	public Collection <String> getMeasureSetsMeasureNames () throws UniverseNotExistException;
 
+	/**
+	 * Return a planning set calculated aggregating the given measures 
+	 * by the given groupby fields filtering the records on the
+	 * given filter
+	 * 
+	 * @param measures
+	 * @param filter
+	 * @param groupby
+	 * @return
+	 */
+	public PlanningSet getDataSet(String measures, String filter, String groupby);
+
 	
 
 }

@@ -16,6 +16,7 @@ package org.plannifico;
 import java.awt.TextField;
 
 import org.plannifico.data.MeasureSet;
+import org.plannifico.data.PlanningSet;
 import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.fields.NumberField;
 import org.plannifico.data.fields.PlanningField;
@@ -113,6 +114,19 @@ public interface PlannificoFactory {
 	 * @return
 	 */
 	public PlannificoLogic getPlanningLogic (LogicType distribution_logic);
+
+	/**
+	 * Create a {@link PlanningSet}
+	 * 
+	 * @param measures
+	 * @param filter
+	 * @param groupby
+	 * @return
+	 */
+	public PlanningSet createPlanningSet (
+			String measures, 
+			String filter,
+			String groupby);
 
 
 	

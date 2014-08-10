@@ -30,7 +30,7 @@ public class NullRecord implements PlanningRecord {
 	}
 
 	@Override
-	public Collection<PlanningField> getFields() {
+	public Collection<PlanningField> getAttributes() {
 		
 		return new ArrayList<PlanningField>();
 	}
@@ -71,6 +71,12 @@ public class NullRecord implements PlanningRecord {
 			throws MissingFieldException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public PlanningField getAttributeValue(String attribute_name) {
+		
+		return new NullField();
 	}
 
 }

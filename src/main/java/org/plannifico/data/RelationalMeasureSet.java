@@ -437,7 +437,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	 * 
 	 * @param measure_set_name
 	 * @param measure_name
-	 * @param fields
+	 * @param attributes
 	 * @param conn
 	 * @return
 	 * @throws SQLException
@@ -477,7 +477,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	 * 
 	 * @param measure_set_name
 	 * @param measure_name
-	 * @param fields
+	 * @param attributes
 	 * @param conn
 	 * @return
 	 * @throws SQLException
@@ -611,6 +611,22 @@ public class RelationalMeasureSet implements MeasureSet {
 				" WHERE " + field_name_components [1] + " = '" + eq_elements [1] + "')";
 	}
 
-	
+	@Override
+	public PlanningSet getDataSet (String measures, String filter, String groupby) {
+		
+		PlanningSet dataset = factory.createPlanningSet (measures, filter, groupby);
+		
+		try {
+			
+			((RelationalPlanningSet)dataset)
+				.populateFromRelationalDB (provideAConnection(), this.planningUniverse, this.name);
+			
+		} catch (SQLException e) {
+			
+			logger.warning (String.format ("Error retrieving the PlanningSet %s", e.getMessage()));
+		}
+		
+		return dataset;
+	}	
 
 }

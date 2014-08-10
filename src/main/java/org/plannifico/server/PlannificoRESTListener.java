@@ -40,6 +40,7 @@ import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.configuration.XMLBasedConfigurationManager;
 import org.plannifico.server.executors.GetAggregatedValueExecutor;
+import org.plannifico.server.executors.GetDatasetExecutor;
 import org.plannifico.server.executors.GetRecordsByAggregationExecutor;
 import org.plannifico.server.executors.GetRecordByKeyExecutor;
 import org.plannifico.server.executors.setAggregatedValueExecutor;
@@ -528,6 +529,44 @@ public class PlannificoRESTListener {
 			
 	    	return new BasicResponse ("1", 
 	    		String.format("Error: error getting records by aggregations. Check the log for details", fields));
+		}										
+	}
+	
+	@GET
+	@Path("/planning_action/getDataset/{universe_name}/{measure_set}")
+	@Consumes(javax.ws.rs.core.MediaType.TEXT_PLAIN)  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getDataset (
+			@PathParam("universe_name") final String universe_name,
+			@PathParam("measure_set") final String measure_set,
+			@QueryParam("measure") final List<String> measures,
+			@QueryParam("filter") final List<String> filters,
+			@QueryParam("groupby") final List<String> groupby) {
+				
+		logger.log (Level.FINE, "Received /getRecordsByAggregation");							
+				
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		Callable<Response> callable = 
+	    		new GetDatasetExecutor (engine, 
+	    				universe_name, 
+	    				measure_set, 
+	    				Utils.listToSemicomaSeparated (measures),
+	    				Utils.listToStringQuery (filters),
+	    				Utils.listToSemicomaSeparated (groupby));
+	    
+	    Future <Response> future = engine.getThreadsPool().submit (callable);
+	
+	    try {
+		
+	    	return future.get();
+		
+	    } catch (InterruptedException | ExecutionException e) {
+			
+	    	return new BasicResponse ("1", 
+	    		String.format("Error: error getting dataset. Check the log for details."));
 		}										
 	}
 	

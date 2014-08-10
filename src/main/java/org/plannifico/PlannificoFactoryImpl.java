@@ -16,8 +16,10 @@ package org.plannifico;
 
 
 import org.plannifico.data.MeasureSet;
+import org.plannifico.data.PlanningSet;
 import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.RelationalMeasureSet;
+import org.plannifico.data.RelationalPlanningSet;
 import org.plannifico.data.RelationalPlanningUniverse;
 import org.plannifico.data.fields.NullField;
 import org.plannifico.data.fields.NumberField;
@@ -128,6 +130,13 @@ public class PlannificoFactoryImpl implements PlannificoFactory {
 	        	return new RelationalRoundedProportionalLogic (new RelationalBasicLogic ());
 		}
 		
+	}
+
+	@Override
+	public PlanningSet createPlanningSet(String measures, String filter,
+			String groupby) {
+		
+		return new RelationalPlanningSet (measures, filter, groupby);
 	}
 
 }

@@ -363,6 +363,14 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		return measureSets.keySet();
 	}
 
+	@Override
+	public PlanningSet getDataSet(String measureset, String measures,
+			String filter, String groupby) {
+		
+		return measureSets.get (measureset)
+				.getDataSet (measures, filter, groupby);
+	}
+
 	
 
 }

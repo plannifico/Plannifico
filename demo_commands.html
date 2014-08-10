@@ -65,6 +65,20 @@ Get the aggregated value of the measure "Quantity" contained in MeasureSet "SALE
 </a>
 
 <p>
+Set the dataset in MeasureSet "SALES" in "SalesUniverse" identified by the following query
+<a href="http://localhost:9998/plannifico/planning_action/getDataset/SalesUniverse/SALES
+?measure=Quantity&measure=Sales&filter=Period.Year:2013&filter=Scenario.Scenario_Name:Budget&groupby=Product.Subcategory&groupby=Period.Month&groupby=Account.Customer Flag"> 
+	[run]
+</a>
+
+<p>
+Set the dataset in MeasureSet "SALES" in "SalesUniverse" identified by the following query
+<a href="http://localhost:9998/plannifico/planning_action/getDataset/SalesUniverse/SALES
+?measure=Quantity&measure=Sales&filter=Period.Year:2013&filter=Scenario.Scenario_Name:Budget&groupby=Period.Month"> 
+	[run]
+</a>
+
+<p>
 Get the PlanningRecords contained in MeasureSet "SALES" in "SalesUniverse" identified by the following query: Year=2013 and Scenario.Scenario_Name=Budget and Product.Subcategory=Mountain Bikes
 <a href="http://localhost:9998/plannifico/planning_action/getRecordsByAggregation/SalesUniverse/SALES?field=Period.Year:2013&field=Scenario.Scenario_Name:Budget&field=Product.Subcategory=Mountain Bikes">
 	[run]

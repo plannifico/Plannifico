@@ -33,13 +33,19 @@ public interface PlanningRecord {
 	 * Return an array with all the columns of the record aggregations
 	 * @return
 	 */
-	public Collection <PlanningField> getFields ();
+	public Collection <PlanningField> getAttributes ();
 
 	/**
 	 * Return an array with all the values of the record
 	 * @return
 	 */
 	public Collection <PlanningField> getMeasures ();
+	
+	/**
+	 * Return the value of the given attribute
+	 * @return
+	 */
+	public PlanningField getAttributeValue (String attribute_name);
 	
 	/**
 	 * Return the value of the given measure

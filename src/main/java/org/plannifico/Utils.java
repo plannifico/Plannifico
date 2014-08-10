@@ -30,6 +30,18 @@ public class Utils {
 		
 		return query.substring(0,query.length()-1);
 	}
+	
+	public static String listToSemicomaSeparated (List <String> fields) {
+		
+		String query = "";
+		
+		for (String field : fields) {
+			
+			query += field + ";";
+		}
+		
+		return query.substring(0,query.length()-1);
+	}
 
 	public static LogicType string2LogicType (String logic_type) {
 		

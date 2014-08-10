@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 
 import org.plannifico.PlannificoFactory;
 import org.plannifico.PlannificoFactoryProvider;
+import org.plannifico.data.PlanningSet;
 import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.data.WrongPlanningRecordKey;
@@ -264,6 +265,17 @@ public class PlanningEngineImpl implements PlanningEngine {
 			throw new UniverseNotExistException();
 		
 		return planningUniverses.get(universe).getAllDimensionRelationships (dimension);
+	}
+
+	@Override
+	public PlanningSet getDataSet(String universe, 
+			String measureset,
+			String measures, String filter, String groupby) throws UniverseNotExistException {
+		
+		if (!planningUniverses.containsKey (universe))
+			throw new UniverseNotExistException();
+		
+		return planningUniverses.get(universe).getDataSet (measureset, measures, filter, groupby);
 	}
 
 }

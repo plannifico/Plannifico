@@ -18,6 +18,7 @@ import java.util.Collection;
 
 import org.plannifico.PlannificoFactory;
 import org.plannifico.PlannificoFactoryProvider;
+import org.plannifico.data.fields.NullField;
 import org.plannifico.data.fields.NumberField;
 import org.plannifico.data.fields.PlanningField;
 
@@ -31,7 +32,7 @@ public class EmptyPlanningRecord implements PlanningRecord {
 	}
 	
 	@Override
-	public Collection<PlanningField> getFields() {
+	public Collection<PlanningField> getAttributes() {
 		
 		return new ArrayList<>();
 	}
@@ -78,6 +79,12 @@ public class EmptyPlanningRecord implements PlanningRecord {
 	public void populateRecordByKey(String key) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public PlanningField getAttributeValue(String attribute_name) {
+		
+		return new NullField();
 	}
 
 }
