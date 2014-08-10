@@ -1,24 +1,24 @@
-CREATE TABLE IF NOT EXISTS DIM_Account (
-	Account VARCHAR(3) not NULL,
-	"Account Name" VARCHAR(255),
-	"Customer Flag" VARCHAR(50),
-	"Employee" VARCHAR(255),
-	"Sector Industry" VARCHAR(255),
-	"Open Opportunity" VARCHAR(255),
-	PRIMARY KEY ( Account )
+CREATE TABLE IF NOT EXISTS DIM_ACCOUNT (
+	ACCOUNT VARCHAR(3) not NULL,
+	"ACCOUNT NAME" VARCHAR(255),
+	"CUSTOMER FLAG" VARCHAR(50),
+	"EMPLOYEE" VARCHAR(255),
+	"SECTOR INDUSTRY" VARCHAR(255),
+	"OPEN OPPORTUNITY" VARCHAR(255),
+	PRIMARY KEY ( ACCOUNT )
 );	
 
-INSERT INTO DIM_ACCOUNT (ACCOUNT,	"Account Name",	"Customer Flag",	"Employee",	"Sector Industry",	"Open Opportunity")
+INSERT INTO DIM_ACCOUNT (ACCOUNT,	"ACCOUNT NAME",	"CUSTOMER FLAG",	"EMPLOYEE",	"SECTOR INDUSTRY",	"OPEN OPPORTUNITY")
 SELECT  "Account",	"Account Name",	"Customer Flag",	"Employee",	"Sector Industry",	"Open Opportunity"
 FROM CSVREAD ('demo/demo_data/Account.csv','Account,Account Name,Customer Flag,Employee,Sector Industry,Open Opportunity')
 WHERE  "Account" != 'Account';
 
 
-CREATE TABLE IF NOT EXISTS DIM_Province (
-	Country VARCHAR(255) not NULL,
-	Name VARCHAR(255),
-	Province VARCHAR(255),
-	PRIMARY KEY ( Province )
+CREATE TABLE IF NOT EXISTS DIM_PROVINCE (
+	COUNTRY VARCHAR(255) not NULL,
+	NAME VARCHAR(255),
+	PROVINCE VARCHAR(255),
+	PRIMARY KEY ( PROVINCE )
 );
 
 INSERT INTO DIM_PROVINCE  (COUNTRY, NAME, PROVINCE)
@@ -27,15 +27,15 @@ FROM CSVREAD ('demo/demo_data/Province.csv','Country,Name,Province')
 WHERE  "Province" != 'Province';
 
 
-CREATE TABLE IF NOT EXISTS DIM_Product (
-	Product VARCHAR(9) not NULL,
-	"Product Name" VARCHAR(255),
-	Category VARCHAR(255),
-	Subcategory VARCHAR(255),
-	PRIMARY KEY ( Product )
+CREATE TABLE IF NOT EXISTS DIM_PRODUCT (
+	PRODUCT VARCHAR(9) not NULL,
+	"PRODUCT NAME" VARCHAR(255),
+	CATEGORY VARCHAR(255),
+	SUBCATEGORY VARCHAR(255),
+	PRIMARY KEY ( PRODUCT )
 );
 
-INSERT INTO DIM_PRODUCT   (PRODUCT,"Product Name", CATEGORY, SUBCATEGORY )
+INSERT INTO DIM_PRODUCT   (PRODUCT,"PRODUCT NAME", CATEGORY, SUBCATEGORY )
 SELECT  "Product","Category","Product Name","Subcategory"
 FROM CSVREAD ('demo/demo_data/Product.csv','Product,Category,Product Name,Subcategory')
 WHERE  "Product" != 'Product';
@@ -64,7 +64,7 @@ SELECT  "Period" ,"Year" ,"Month"
 FROM CSVREAD ('demo/demo_data/Period.csv','Period,Year,Month')
 WHERE  "Period" != 'Period';
 
-CREATE TABLE IF NOT EXISTS MEASURE_SET_Sales
+CREATE TABLE IF NOT EXISTS MEASURE_SET_SALES
 (
 	Account VARCHAR(3) not NULL,
 	Province VARCHAR(255),
