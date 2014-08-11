@@ -55,22 +55,20 @@ import org.plannifico.server.response.StrMapResponse;
 @Path ("/plannifico")
 public class PlannificoRESTListener {
 	
-	
 	private static String configurationFile;
 
 	private static PlannificoFactory factory;
+	
+	private static PlanningEngine engine;
+
+	private final static Logger logger = Logger.getLogger (PlannificoRESTListener.class.getName());
+
 
 	public PlannificoRESTListener () {}
 	
 	public static void main(String[] args) {		
 		
-		URI baseUri = UriBuilder.fromUri ("http://localhost/").port(9998).build();
-		
-		ResourceConfig config = new ResourceConfig (PlannificoRESTListener.class)
-				.packages("org.glassfish.jersey.examples.jackson")
-		        .register(JacksonFeature.class);		
-		
-		JdkHttpServerFactory.createHttpServer (baseUri, config);				
+		initRESTWebAPIs();				
 		
 		configurationFile = 
 				XMLBasedConfigurationManager.DEFAULT_CONFIGURATION_FILE;
@@ -81,6 +79,21 @@ public class PlannificoRESTListener {
     	factory = PlannificoFactoryProvider.getInstance();
     	
     	engine = factory.getPlanningEngine ();
+	}
+
+	public static boolean initRESTWebAPIs() {
+		
+		logger.log (Level.INFO, "initRESTWebAPIs called");
+		
+		URI baseUri = UriBuilder.fromUri ("http://localhost/").port(9998).build();
+		
+		ResourceConfig config = new ResourceConfig (PlannificoRESTListener.class)
+				.packages("org.glassfish.jersey.examples.jackson")
+		        .register(JacksonFeature.class);		
+		
+		JdkHttpServerFactory.createHttpServer (baseUri, config);
+		
+		return true;
 	}
 	
 	@Path("/helloworld")
@@ -570,8 +583,5 @@ public class PlannificoRESTListener {
 		}										
 	}
 	
-	private static PlanningEngine engine;
-
-	private final static Logger logger = Logger.getLogger (PlannificoRESTListener.class.getName());
-
+	
 }
