@@ -89,7 +89,8 @@ public class PlannificoRESTListener {
 		
 		ResourceConfig config = new ResourceConfig (PlannificoRESTListener.class)
 				.packages("org.glassfish.jersey.examples.jackson")
-		        .register(JacksonFeature.class);		
+		        .register(JacksonFeature.class)
+		        .register(JerseyAccessControl.class);
 		
 		JdkHttpServerFactory.createHttpServer (baseUri, config);
 		
@@ -137,8 +138,14 @@ public class PlannificoRESTListener {
 	public Response stop () {
 		
 		logger.log (Level.FINE, "Received /stop");	
+		
+			
+		if( engine.stop () == 1)
+			return new BasicResponse("1", 
+					"Severe Error starting the server: read log for more information");
+		
 						
-		return new BasicResponse ("0","Success");			
+		return new BasicResponse ("0","Success: server stopped");			
 	}
 	
 	@GET
