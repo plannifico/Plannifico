@@ -193,6 +193,36 @@ public interface PlanningEngine {
 			String universe_name) throws UniverseNotExistException;
 	
 	/**
+	 * Return the dimension attributes contained in  the {@link PlanningUniverse}
+	 * 
+	 * @param universe_name
+	 * @return
+	 * @throws InstanceNotExistException 
+	 */
+	public Collection <String> getDimensionAttributes (
+			String universe_name, String dimension_name) throws UniverseNotExistException;
+	
+	/**
+	 * Return the dimension attributes contained in  the {@link PlanningUniverse} for all the dimensions
+	 * 
+	 * @param universe_name
+	 * @return
+	 * @throws InstanceNotExistException 
+	 */
+	public Map<String, Collection<String>>  getAllDimensionAttributes (
+			String universe_name) throws UniverseNotExistException;
+	
+	/**
+	 * Return the dimension attributes contained in  the {@link PlanningUniverse}
+	 * 
+	 * @param universe_name
+	 * @return
+	 * @throws InstanceNotExistException 
+	 */
+	public Collection<String>  getDimensionAttributeElements (
+			String universe_name, String dimension, String attribute) throws UniverseNotExistException;
+	
+	/**
 	 * Return the dimension relationships in  the {@link PlanningUniverse} for the
 	 * given dimension and the given dimension key
 	 * 

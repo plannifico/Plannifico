@@ -241,6 +241,36 @@ public class PlannificoRESTListener {
 	}
 	
 	@GET
+	@Path("/adm/getDimensionAttributeElements/{universe_name}/{dimension}/{attribute}")
+	@Consumes("text/plain")  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getDimensionAttributeElements (
+			@PathParam("universe_name") final String universe_name,
+			@PathParam("dimension") final String dimension,
+			@PathParam("attribute") final String attribute) {
+				
+		logger.log (Level.FINE, "Received /getDimensionAttributeElements");	
+		
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		if ((universe_name == null) || (dimension == null) || (attribute == null))
+			return new BasicResponse ("1","Error: Missing param.");
+		
+		try {
+					
+			return new BasicResponse("0","Success")
+				.append(new StrCollectionResponse(
+						engine.getDimensionAttributeElements (universe_name, dimension, attribute)));
+		
+		} catch (UniverseNotExistException e) {
+		
+			return new BasicResponse ("1", String.format("Error: Universe %s does not exist)",universe_name));
+		}										
+	}
+	
+	@GET
 	@Path("/adm/getAllDimensionRelationships/{universe_name}/{dimension}")
 	@Consumes("text/plain")  
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -262,6 +292,64 @@ public class PlannificoRESTListener {
 			return new BasicResponse("0","Success")
 				.append(new StrMapResponse(
 						engine.getAllDimensionRelationships (universe_name, dimension)));
+		
+		} catch (UniverseNotExistException e) {
+		
+			return new BasicResponse ("1", String.format("Error: Universe %s does not exist)",universe_name));
+		}										
+	}
+	
+
+	@GET
+	@Path("/adm/getAllDimensionAttributes/{universe_name}")
+	@Consumes("text/plain")  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getAllDimensionAttributes (
+			@PathParam("universe_name") final String universe_name) {
+				
+		logger.log (Level.FINE, "Received /getAllDimensionRelationships");	
+		
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		if ((universe_name == null))
+			return new BasicResponse ("1","Error: Missing param.");
+		
+		try {
+					
+			return new BasicResponse("0","Success")
+				.append(new StrMapResponse(
+						engine.getAllDimensionAttributes(universe_name)));
+		
+		} catch (UniverseNotExistException e) {
+		
+			return new BasicResponse ("1", String.format("Error: Universe %s does not exist)",universe_name));
+		}										
+	}
+	
+	@GET
+	@Path("/adm/getDimensionAttributes/{universe_name}/{dimension}")
+	@Consumes("text/plain")  
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public org.plannifico.server.response.Response getDimensionAttributes (
+			@PathParam("universe_name") final String universe_name,
+			@PathParam("dimension") final String dimension) {
+				
+		logger.log (Level.FINE, "Received /getDimensionAttributes");	
+		
+		if (engine.getStatus () != PlanningEngine.STARTED)
+			return new BasicResponse ("1",
+					"Error: the server is not started.");
+		
+		if ((universe_name == null) || (dimension == null))
+			return new BasicResponse ("1","Error: Missing param.");
+		
+		try {
+					
+			return new BasicResponse("0","Success")
+				.append(new StrCollectionResponse(
+						engine.getDimensionAttributes (universe_name, dimension)));
 		
 		} catch (UniverseNotExistException e) {
 		

@@ -511,6 +511,30 @@ public class PlanningEngineImplTestCase {
 	}
 	
 	@Test
+	public void testGetDimensionAttributeElements () 
+			throws UniverseNotExistException, ServerAlreadyRunningException {
+		
+		engine.start(core_configuration_file);
+		
+		Collection <String> attrs = 
+				engine.getDimensionAttributeElements ("TEST", "AAAA", "AA");
+		
+		String attrs_str = "";
+		
+		for (String a_name : attrs) {
+			
+			attrs_str += a_name;
+		}
+		
+		assertTrue(
+				attrs_str.contains("AA1") && 
+				attrs_str.contains("AA2") &&
+				attrs_str.contains("AA3"));
+		
+		engine.stop();
+	}
+	
+	@Test
 	public void testGetAllDimensionRelationships () 
 			throws UniverseNotExistException, ServerAlreadyRunningException {
 		
@@ -534,6 +558,61 @@ public class PlanningEngineImplTestCase {
 				attrs.contains("A2;") && 
 				attrs.contains("AA2;") &&
 				attrs.contains("AAA1;"));
+		
+		engine.stop();
+	}
+	
+	@Test
+	public void testGetDimensionAttributes () 
+			throws UniverseNotExistException, ServerAlreadyRunningException {
+		
+		engine.start(core_configuration_file);
+		
+		Collection<String> attrs_collection = 
+				engine.getDimensionAttributes ("TEST", "AAAA");
+		
+		//'AAAA','A','AA','AAA'
+		
+		
+		String attrs = "";
+		
+		for (String attr : attrs_collection) {
+			
+			attrs += attr + ";";
+		}
+		
+		assertTrue(
+				attrs.contains("A;") && 
+				attrs.contains("AA;") &&
+				attrs.contains("AAA;"));
+		
+		engine.stop();
+	}
+	
+	@Test
+	public void testGetAllDimensionAttributes () 
+			throws UniverseNotExistException, ServerAlreadyRunningException {
+		
+		engine.start(core_configuration_file);
+		
+		Map<String, Collection <String>> rels = 
+				engine.getAllDimensionAttributes ("TEST");
+		
+		//'AAAA6','A2','AA2','AAA1'
+		
+		Collection <String> rel = rels.get ("AAAA");
+		
+		String attrs = "";
+		
+		for (String attr : rel) {
+			
+			attrs += attr + ";";
+		}
+		
+		assertTrue(
+				attrs.contains("A;") && 
+				attrs.contains("AA;") &&
+				attrs.contains("AAA;"));
 		
 		engine.stop();
 	}

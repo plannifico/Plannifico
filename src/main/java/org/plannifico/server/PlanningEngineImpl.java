@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
-
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -232,6 +231,33 @@ public class PlanningEngineImpl implements PlanningEngine {
 		return planningUniverses.get(universe_name).getPlanningDimensions ();
 	}
 
+
+	@Override
+	public Collection<String> getDimensionAttributes(String universe_name,
+			String dimension_name) throws UniverseNotExistException {
+		
+		return planningUniverses.get (universe_name).getDimensionAttribute (dimension_name);
+		
+	}
+	
+	@Override
+	public Map<String, Collection<String>>  getAllDimensionAttributes(String universe_name)
+			throws UniverseNotExistException {
+		
+		HashMap <String, Collection<String>> dims_attributes = new HashMap<String, Collection<String>>();
+		
+		Collection<String> dimensions = planningUniverses.get(universe_name).getPlanningDimensions ();
+		
+		for (String dimension:dimensions) {
+			
+			Collection<String> attributes = getDimensionAttributes(universe_name, dimension);
+			
+			dims_attributes.put(dimension, attributes);
+		}
+		
+		return dims_attributes;
+	}
+	
 	@Override
 	public Collection<String> getPlanningDimensionRelationship (
 			String universe_name, String dimension, String dimension_key)
@@ -258,6 +284,17 @@ public class PlanningEngineImpl implements PlanningEngine {
 	}
 
 	@Override
+	public Collection<String> getDimensionAttributeElements(
+			String universe_name, String dimension, String attribute)
+			throws UniverseNotExistException {
+		
+		if (!planningUniverses.containsKey (universe_name))
+			throw new UniverseNotExistException();
+		
+		return planningUniverses.get(universe_name).getDimensionAttributeElements (dimension, attribute);
+	}
+	
+	@Override
 	public Map<String, Collection<String>> getAllDimensionRelationships (
 			String universe, String dimension) throws UniverseNotExistException {
 		
@@ -266,6 +303,8 @@ public class PlanningEngineImpl implements PlanningEngine {
 		
 		return planningUniverses.get(universe).getAllDimensionRelationships (dimension);
 	}
+	
+	
 
 	@Override
 	public PlanningSet getDataSet(String universe, 

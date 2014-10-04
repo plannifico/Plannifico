@@ -290,6 +290,88 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		return rels;
 	}
 
+
+	@Override
+	public Collection<String> getDimensionAttribute (String dimension) {
+		
+		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		
+		ArrayList<String> attributes = new ArrayList<> ();
+		
+		try {
+		
+			Connection conn = cp.getConnection (this.name);
+			
+			ResultSet rs = getColumns (dimension, conn);
+			
+			if (rs == null) return attributes;
+			
+			int i=1;
+			
+			while (rs.next()) {			
+				
+				String col = rs.getString ("COLUMN_NAME");
+				
+				attributes.add (col);
+			}
+			
+		} catch (SQLException e) {
+			
+			logger.warning (
+					String.format ("Error retriving universe %s dimension attributes %s: %s", 
+							this.name, 
+							dimension ,
+							e.getMessage()));
+			
+		}
+		
+		return attributes;
+	}
+
+
+	@Override
+	public Collection<String> getDimensionAttributeElements (
+			String dimension,
+			String attribute) {
+		
+		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		
+		ArrayList<String> elements = new ArrayList<> ();
+		
+		try {
+		
+			Connection conn = cp.getConnection (this.name);
+			
+			PreparedStatement stmt = 
+					conn.prepareStatement (
+							"SELECT distinct \"" + attribute + "\"" + 
+							" FROM DIM_" + dimension.toUpperCase());
+			
+			ResultSet rels_rs = stmt.executeQuery();
+			
+			while (rels_rs.next ()) {
+				
+				String element = rels_rs.getString (attribute);
+				
+				elements.add (element);
+			}					
+					
+		
+		} catch (SQLException e) {
+			
+			logger.warning (
+					String.format ("Error retriving universe %s relations for dimension %s: %s", 
+							this.name, 
+							dimension ,
+							e.getMessage()));
+			
+		}
+		
+		return elements;		
+
+	}
+
+	
 	@Override
 	public Collection<String> getPlanningDimensionRelationship (
 			String dimension, 
@@ -304,15 +386,9 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		
 			Connection conn = cp.getConnection (this.name);
 			
-			DatabaseMetaData md = conn.getMetaData();
+			ResultSet rs = getColumns (dimension, conn);
 			
-			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
-			
-			if (!rs.next()) return rels;
-			
-			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
-			
-			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
+			if (rs == null) return rels;
 			
 			int i=1;
 			
@@ -351,6 +427,21 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		return rels;		
 	}
 
+	private ResultSet getColumns(String dimension, Connection conn) throws SQLException {
+		
+		DatabaseMetaData md = conn.getMetaData();
+		
+		ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
+		
+		if (!rs.next()) return null;
+		
+		logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
+		
+		rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
+		
+		return rs;
+	}
+
 	@Override
 	public int getMeasureSetsNumber() {
 		
@@ -371,6 +462,5 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 				.getDataSet (measures, filter, groupby);
 	}
 
-	
 
 }

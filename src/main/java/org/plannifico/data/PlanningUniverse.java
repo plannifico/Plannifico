@@ -141,6 +141,16 @@ public interface PlanningUniverse {
 	 */
 	public Collection <String> getPlanningDimensions () throws UniverseNotExistException;
 	
+
+	/**
+	 * Return the dimension attributes contained in  the {@link PlanningUniverse}
+	 * 
+	 * @param instance_name
+	 * @return
+	 * @throws InstanceNotExistException 
+	 */
+	public Collection<String> getDimensionAttribute (String dimension);
+	
 	/**
 	 * Return the dimension relationships in  the {@link PlanningUniverse} for the
 	 * given dimension and the given dimension key
@@ -176,7 +186,16 @@ public interface PlanningUniverse {
 	 */
 	public Map<String, Collection<String>> getAllDimensionRelationships (String dimension);
 	
-	
+	/**
+	 * Return the elements of the given attribute
+	 * @param dimension
+	 * @param attribute
+	 * @return
+	 */
+	public Collection<String>  getDimensionAttributeElements(
+			String dimension, String attribute);
+
+
 	
 	/**
 	 * Return a planning set calculated on the {@link MeasureSet}
@@ -194,5 +213,4 @@ public interface PlanningUniverse {
 			String filter, String groupby);
 
 	
-
 }
