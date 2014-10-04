@@ -208,9 +208,10 @@ public interface PlanningUniverse {
 	 * @param filter
 	 * @param groupby
 	 * @return
+	 * @throws WrongQuerySintax 
 	 */
 	public PlanningSet getDataSet(String measureset, String measures,
-			String filter, String groupby);
+			String filter, String groupby) throws WrongQuerySintax;
 
 	
 }

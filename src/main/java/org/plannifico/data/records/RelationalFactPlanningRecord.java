@@ -109,6 +109,7 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 		ResultSetMetaData rsmd = result.getMetaData ();
 	
 		int columnsNumber = rsmd.getColumnCount ();
+		
 	
 		for (int i = 1; i <= columnsNumber; i++) {				
 	
@@ -118,7 +119,7 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 			
 				if (field instanceof String) {
 					
-					String column_name = rsmd.getColumnName(i);
+					String column_name = rsmd.getTableName(i) + "." + rsmd.getColumnName(i);
 					
 					logger.finer (
 							String.format ("populating record with field: %s", 

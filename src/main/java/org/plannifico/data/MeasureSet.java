@@ -129,8 +129,9 @@ public interface MeasureSet {
 	 * @param filter
 	 * @param groupby
 	 * @return
+	 * @throws WrongQuerySintax 
 	 */
-	public PlanningSet getDataSet(String measures, String filter, String groupby);
+	public PlanningSet getDataSet(String measures, String filter, String groupby) throws WrongQuerySintax;
 
 	
 

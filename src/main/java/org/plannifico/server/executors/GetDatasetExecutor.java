@@ -17,6 +17,7 @@ import java.util.concurrent.Callable;
 
 import org.plannifico.data.PlanningSet;
 import org.plannifico.data.UniverseNotExistException;
+import org.plannifico.data.WrongQuerySintax;
 import org.plannifico.data.fields.NullField;
 import org.plannifico.data.fields.PlanningField;
 
@@ -79,6 +80,10 @@ public class GetDatasetExecutor implements Callable<Response> {
 		} catch (UniverseNotExistException e) {
 			
 			return new BasicResponse ("1", String.format("Error: the universe does not exist"));
+			
+		} catch (WrongQuerySintax e) {
+			
+			return new BasicResponse ("1", String.format("Error: wrong query exception. " + e));
 		}
 	}	
 }

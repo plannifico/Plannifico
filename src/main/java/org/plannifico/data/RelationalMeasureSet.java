@@ -612,7 +612,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	}
 
 	@Override
-	public PlanningSet getDataSet (String measures, String filter, String groupby) {
+	public PlanningSet getDataSet (String measures, String filter, String groupby) throws WrongQuerySintax {
 		
 		PlanningSet dataset = factory.createPlanningSet (measures, filter, groupby);
 		

@@ -455,8 +455,8 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 	}
 
 	@Override
-	public PlanningSet getDataSet(String measureset, String measures,
-			String filter, String groupby) {
+	public PlanningSet getDataSet (String measureset, String measures,
+			String filter, String groupby) throws WrongQuerySintax {
 		
 		return measureSets.get (measureset)
 				.getDataSet (measures, filter, groupby);

@@ -31,6 +31,7 @@ import org.plannifico.PlannificoFactoryProvider;
 import org.plannifico.data.PlanningSet;
 import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.data.WrongPlanningRecordKey;
+import org.plannifico.data.WrongQuerySintax;
 import org.plannifico.data.fields.NumberField;
 import org.plannifico.data.fields.PlanningField;
 import org.plannifico.data.fields.WrongFieldTypeException;
@@ -367,7 +368,7 @@ public class PlanningEngineImplTestCase {
 	
 	@Test
 	public void testGetPlanningSet () 
-			throws ActionNotPermittedException, ServerAlreadyRunningException, UniverseNotExistException {
+			throws ActionNotPermittedException, ServerAlreadyRunningException, UniverseNotExistException, WrongQuerySintax {
 		
 		engine.start(core_configuration_file);
 				

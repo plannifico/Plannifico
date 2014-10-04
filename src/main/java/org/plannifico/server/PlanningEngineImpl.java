@@ -32,6 +32,7 @@ import org.plannifico.data.PlanningSet;
 import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.UniverseNotExistException;
 import org.plannifico.data.WrongPlanningRecordKey;
+import org.plannifico.data.WrongQuerySintax;
 import org.plannifico.data.fields.PlanningField;
 import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.logic.LogicCalculationException;
@@ -309,7 +310,7 @@ public class PlanningEngineImpl implements PlanningEngine {
 	@Override
 	public PlanningSet getDataSet(String universe, 
 			String measureset,
-			String measures, String filter, String groupby) throws UniverseNotExistException {
+			String measures, String filter, String groupby) throws UniverseNotExistException, WrongQuerySintax {
 		
 		if (!planningUniverses.containsKey (universe))
 			throw new UniverseNotExistException();

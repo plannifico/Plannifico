@@ -48,7 +48,8 @@ public class RelationalPlanningSet implements PlanningSet {
 		this.groupby = groupby;
 	}
 
-	public void populateFromRelationalDB (Connection conn, String planning_universe, String measure_set_name) {
+	public void populateFromRelationalDB (Connection conn, String planning_universe, String measure_set_name) 
+		throws WrongQuerySintax {
 		
 		try {			
 			
@@ -129,7 +130,8 @@ public class RelationalPlanningSet implements PlanningSet {
 		return setData;
 	}
 	
-	private static String getJoinAndWhere (String filter, String groupby, String measure_set_name) {
+	private static String getJoinAndWhere (String filter, String groupby, String measure_set_name) 
+			throws WrongQuerySintax {
 		
 		String join_and_where;
 		String where_clause = "WHERE ";
@@ -145,7 +147,13 @@ public class RelationalPlanningSet implements PlanningSet {
 			
 			String[] eq_elements = filter_element.split("=");
 			
+			if (eq_elements.length == 0)
+				throw new WrongQuerySintax ("Wrong equality sintax");
+			
 			String[] dimension_attribute = eq_elements [0].split("\\.") ;
+			
+			if (dimension_attribute.length != 2)
+				throw new WrongQuerySintax ("Wrong field sintax");
 			
 			String dimension = dimension_attribute [0];			
 			String attribute = dimension_attribute [1];
@@ -176,7 +184,13 @@ public class RelationalPlanningSet implements PlanningSet {
 			
 			String[] eq_elements = groupby_element.split("=");
 			
-			String[] dimension_attribute = eq_elements [0].split("\\.") ;
+			if (eq_elements.length == 0)
+				throw new WrongQuerySintax ("Wrong groupby sintax");
+			
+			String[] dimension_attribute = eq_elements [0].split("\\.") ;			
+
+			if (dimension_attribute.length != 2)
+				throw new WrongQuerySintax ("Wrong groupby sintax");
 			
 			String dimension = dimension_attribute [0];			
 			String attribute = dimension_attribute [1];
