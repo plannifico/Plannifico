@@ -68,6 +68,8 @@ public class RelationalPlanningSet implements PlanningSet {
 				join_and_where + 
 				" GROUP BY " + select_fields_clause.toUpperCase();
 			
+			logger.info("sql_stm " +sql_stm);
+			
 			PreparedStatement stmt = conn.prepareStatement (sql_stm);
 			
 			ResultSet rels_rs = stmt.executeQuery();
@@ -139,6 +141,8 @@ public class RelationalPlanningSet implements PlanningSet {
 		
 		List<String> filter_elements = Arrays.asList (filter.split(";"));
 		
+		java.util.Collections.sort(filter_elements);
+		
 		boolean is_first_where = true;
 		
 		HashMap <String, String> dimension_already_in_join = new HashMap<>();
@@ -158,22 +162,18 @@ public class RelationalPlanningSet implements PlanningSet {
 			String dimension = dimension_attribute [0];			
 			String attribute = dimension_attribute [1];
 			
-			dimension_already_in_join.put(dimension, dimension);
-			
 			if (is_first_where) {
 				
-				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + "." + attribute + " = '" + eq_elements [1] + "'";
+				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + ".\"" + attribute + "\" = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + "." + attribute + " = '" + eq_elements [1] + "'";
+				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + ".\"" + attribute + "\" = '" + eq_elements [1] + "'";
 			
-			join_clause += " JOIN DIM_" + 
-					dimension + " on " +
-					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
-					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
-					dimension;
+			join_clause += buildJoin (dimension_already_in_join, measure_set_name, dimension);
+			
+			dimension_already_in_join.put(dimension, dimension);
 		}			
 		
 		List<String> groupby_elements = Arrays.asList (groupby.split(";"));
@@ -193,21 +193,36 @@ public class RelationalPlanningSet implements PlanningSet {
 				throw new WrongQuerySintax ("Wrong groupby sintax");
 			
 			String dimension = dimension_attribute [0];			
-			String attribute = dimension_attribute [1];
-			
-			if (dimension_already_in_join.containsKey(dimension))
-				continue;
 						
-			join_clause += " JOIN DIM_" + 
-					dimension + " on " +
-					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
-					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
-					dimension;
+			join_clause += buildJoin (dimension_already_in_join, measure_set_name, dimension);
+			
+			dimension_already_in_join.put(dimension, dimension);
 		}			
 		
 		join_and_where = join_clause + " " + where_clause;
 		
 		return join_and_where;
+	}
+
+	public static String buildJoin (
+			HashMap<String, String> dimension_already_in_join,
+			String measure_set_name, String dimension) {
+		
+		String join_clause = "";
+		
+		if (dimension_already_in_join.containsKey(dimension))
+			join_clause = " AND " +						
+					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
+					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
+					dimension;
+		else
+			join_clause = " JOIN DIM_" + 
+					dimension + " on " +
+					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
+					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
+					dimension;
+		
+		return join_clause;
 	}
 
 }

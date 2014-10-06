@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -547,6 +548,8 @@ public class RelationalMeasureSet implements MeasureSet {
 		
 		boolean is_first_where = true;
 		
+		HashMap <String, String> dimension_already_in_join = new HashMap<>();
+		
 		for (String aggregation_eq : aggregation_eqs) {
 			
 			String[] eq_elements = aggregation_eq.split("=");
@@ -555,18 +558,20 @@ public class RelationalMeasureSet implements MeasureSet {
 			
 			if (is_first_where) {
 				
-				where_clause += DIM_PREFIX + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
+				where_clause += DIM_PREFIX + field_name_components [0] + ".\"" + field_name_components [1] + "\" = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + "." + field_name_components [1] + " = '" + eq_elements [1] + "'";
+				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + ".\"" + field_name_components [1] + "\" = '" + eq_elements [1] + "'";
 			
-			join_clause += " JOIN DIM_" + 
-					field_name_components [0] + " on " +
-					DIM_PREFIX + field_name_components [0] + "." + field_name_components [0] + " = " + 
-					MEASURE_SET_PREFIX + measure_set_name + "." + 
-					field_name_components [0];
+			join_clause += 
+					RelationalPlanningSet.buildJoin (
+							dimension_already_in_join, 
+							measure_set_name,
+							field_name_components [0]);
+			
+			dimension_already_in_join.put(field_name_components [0], field_name_components [0]);
 		}				
 		
 		join_and_where = join_clause + " " + where_clause + ";";
@@ -602,13 +607,13 @@ public class RelationalMeasureSet implements MeasureSet {
 		return where_clause;
 	}
 
-	private static String getWhereForUpdateClause(String[] eq_elements,
+	private static String getWhereForUpdateClause (String[] eq_elements,
 			String[] field_name_components) {
 		
 		return field_name_components [0] + 
 				" in (SELECT " + field_name_components [0] + 
 				" FROM DIM_" + field_name_components [0] + 
-				" WHERE " + field_name_components [1] + " = '" + eq_elements [1] + "')";
+				" WHERE \"" + field_name_components [1] + "\" = '" + eq_elements [1] + "')";
 	}
 
 	@Override
