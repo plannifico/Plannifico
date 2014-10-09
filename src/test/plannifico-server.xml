@@ -10,12 +10,12 @@
 
 		<TEST>
 			<planningDB>
-	
-				<!--databaseURL>jdbc:h2:tcp://localhost/~/PLN_UNIVERSE_TEST</databaseURL-->
-				<databaseURL>jdbc:h2:~/PLN_UNIVERSE_TEST</databaseURL>
-				<dBUser>sa</dBUser>
 
-				<dBPwd></dBPwd>	
+				<driver>com.mysql.jdbc.Driver</driver>
+				<databaseURL>jdbc:mysql://localhost:3306/PLN_UNIVERSE_TEST</databaseURL>
+				<dBUser>plannifico</dBUser>
+				<dBPwd>plannifico</dBPwd>
+	
 			
 			</planningDB>
 

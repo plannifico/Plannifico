@@ -28,8 +28,8 @@ import org.plannifico.data.MeasureSet;
 import org.plannifico.data.PlanningUniverse;
 import org.plannifico.data.RelationalMeasureSet;
 import org.plannifico.data.WrongPlanningRecordKey;
+import org.plannifico.server.C3P0ConnectionPoolProvider;
 import org.plannifico.server.ConnectionPoolProvider;
-import org.plannifico.server.H2ConnectionPoolProvider;
 
 public class RelationalFactPlanningRecord extends FactPlanningRecord {
 	
@@ -43,7 +43,7 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 	@Override
 	public void populateRecordByKey (String key) throws WrongPlanningRecordKey {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance ();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance ();
 		
 		try {
 			
@@ -127,7 +127,7 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 					
 					addField (factory.getTextField (
 							column_name
-								.replace (RelationalMeasureSet.MEASURE_PREFIX, "")
+								.replace (RelationalMeasureSet.MEASURE_SET_PREFIX, "")
 								.replace (RelationalMeasureSet.DIM_PREFIX, ""), 
 							(String) field));					
 					

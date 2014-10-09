@@ -57,8 +57,6 @@ public class PlanningEngineImpl implements PlanningEngine {
 	private final static Logger logger = Logger.getLogger (PlanningEngineImpl.class.getName());
 
 
-	private static final int DB_CONNECTION_POOL = 10;	
-
 	@Override
 	public int start (String configuration_file)
 			throws ServerAlreadyRunningException {
@@ -75,28 +73,21 @@ public class PlanningEngineImpl implements PlanningEngine {
     		return 1;
     	
     	logger.log(Level.INFO, "Configuration load [DONE]");
-    	    	
-    	//Connection conn_working_data;
+    	    			
+		connectionPoolProvider = factory.getConnectionPoolProvider ();
     	
-    	connectionPoolProvider = factory.getConnectionPoolProvider();
-    	
-    	Set <String> universes = configurationManager.getPlanningUniverses();
+		Set <String> universes = configurationManager.getPlanningUniverses();
     	
     	for (String universe_name : universes) {
     	
-    		/*int db_connections = DB_CONNECTION_POOL;
-    		
-    		while (db_connections-- > 0) {
-    			*/
-            	if(!connectionPoolProvider.addConnectionPool (
-            			universe_name,
-            			configurationManager.getDatabaseURL (universe_name), 
-            			configurationManager.getPlanningDataDBUser (universe_name), 
-            			configurationManager.getPlanningDataDBPwd (universe_name)))
-            		
-            		return 1;
-    		//}
-    			
+         	if(!connectionPoolProvider.addConnectionPool (
+        			universe_name,
+        			configurationManager.getDriver (universe_name),
+        			configurationManager.getDatabaseURL (universe_name), 
+        			configurationManager.getPlanningDataDBUser (universe_name), 
+        			configurationManager.getPlanningDataDBPwd (universe_name)))
+        		
+        		return 1;   			
     	}
     	
     	logger.log(Level.INFO, "Populating Planning Universes...");
@@ -105,31 +96,31 @@ public class PlanningEngineImpl implements PlanningEngine {
 		
     		for (String universe_name : universes) {    		
     			
+    			logger.log(Level.FINE, "getting connection...");
+    			
     			connectionPoolProvider.getConnection (universe_name);
+    			
+    			logger.log(Level.FINE, "connection ok...");
     			
     			PlanningUniverse universe = factory.getPlanningUniverse (universe_name);
             	
             	planningUniverses.put (universe_name, universe);
-    		}    	    	
-    		
-    		
-		} catch (SQLException e) {
+    		}    	        	
+	    	    	
+			logger.log(Level.INFO, "Populating Planning Universes [DONE]");
+			
+	    	logger.log(Level.INFO, "Server starting [DONE]");
+	
+	    	isRunning = true;
+	    	
+			return 0;
+			
+    	} catch (SQLException e) {
 			
 			logger.log(Level.SEVERE, "Error Populating Planning Universes: " + e.getMessage());
 
 			return 1;			
 		}
-
-    	
-		//= new HashMap <String, PlanningUniverse> ();
-    	    	
-		logger.log(Level.INFO, "Populating Planning Universes [DONE]");
-		
-    	logger.log(Level.INFO, "Server starting [DONE]");
-
-    	isRunning = true;
-    	
-		return 0;
 	}
 
 	@Override

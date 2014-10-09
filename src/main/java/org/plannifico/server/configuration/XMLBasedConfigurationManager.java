@@ -37,6 +37,7 @@ public class XMLBasedConfigurationManager implements ConfigurationManager {
 	private Map<String,String> databaseURL = new HashMap<>();
 	private Map<String,String>  planningDataDBUser = new HashMap<>();
 	private Map<String,String>  planningDataDBPwd = new HashMap<>();
+	private Map<String,String>  planningDBDriver = new HashMap<>();
 	
 	private String workDatabaseURL;
 
@@ -89,6 +90,8 @@ public class XMLBasedConfigurationManager implements ConfigurationManager {
 						String.format("Configuration for universe %s: user name: %s", universe_name, planningDataDBUser));
 				
 				planningDataDBPwd.put (universe_name, config.getString ("Server." + universe + ".planningDB.dBPwd"));
+				
+				planningDBDriver.put (universe_name, config.getString ("Server." + universe + ".planningDB.driver"));
 				
 				logger.log(Level.INFO, 
 						String.format("Configuration for universe %s: password: %s", universe_name, planningDataDBPwd));
@@ -159,6 +162,12 @@ public class XMLBasedConfigurationManager implements ConfigurationManager {
 	public Set <String> getPlanningUniverses() {
 		
 		return databaseURL.keySet();
+	}
+
+	@Override
+	public String getDriver(String universe_name) {
+		
+		return planningDBDriver.get (universe_name);
 	}
 	
 }

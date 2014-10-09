@@ -6,10 +6,13 @@
 		<SalesUniverse>
 			<planningDB>	
 				<!--databaseURL>jdbc:h2:tcp://localhost/~/SalesUniverse</databaseURL-->
-				<databaseURL>jdbc:h2:~/SalesUniverse</databaseURL>
-				<dBUser>sa</dBUser>
-				<dBPwd></dBPwd>	
-			
+				<!--databaseURL>jdbc:h2:~/SalesUniverse</databaseURL-->
+				<!--dBUser>sa</dBUser-->
+				<!--dBPwd></dBPwd-->	
+				<driver>com.mysql.jdbc.Driver</driver>
+				<databaseURL>jdbc:mysql://localhost:3306/SalesUniverse</databaseURL>
+				<dBUser>plannifico</dBUser>
+				<dBPwd>plannifico</dBPwd>	
 			</planningDB>
 		</SalesUniverse>
 	</Server>

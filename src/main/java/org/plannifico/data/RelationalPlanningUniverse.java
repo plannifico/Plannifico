@@ -32,8 +32,8 @@ import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.logic.LogicCalculationException;
 import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.ActionNotPermittedException;
+import org.plannifico.server.C3P0ConnectionPoolProvider;
 import org.plannifico.server.ConnectionPoolProvider;
-import org.plannifico.server.H2ConnectionPoolProvider;
 import org.plannifico.server.PlanningEngineImpl;
 
 
@@ -62,7 +62,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		
 		name = universe_name;
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		loadDimensions (cp);
 		
@@ -216,7 +216,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 	@Override
 	public Map<String, Collection<String>> getAllDimensionRelationships (String dimension) {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		Map<String, Collection<String>> rels = new HashMap<>();
 		
@@ -241,7 +241,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			while (rs.next()) {			
 				
-				String col = "\"" + rs.getString ("COLUMN_NAME") + "\"";
+				String col = "`" + rs.getString ("COLUMN_NAME") + "`";
 				
 				logger.fine (String.format ("Retrived column: %s", col));
 				
@@ -294,7 +294,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 	@Override
 	public Collection<String> getDimensionAttribute (String dimension) {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		ArrayList<String> attributes = new ArrayList<> ();
 		
@@ -334,7 +334,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			String dimension,
 			String attribute) {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		ArrayList<String> elements = new ArrayList<> ();
 		
@@ -344,7 +344,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			PreparedStatement stmt = 
 					conn.prepareStatement (
-							"SELECT distinct \"" + attribute + "\"" + 
+							"SELECT distinct `" + attribute + "`" +
 							" FROM DIM_" + dimension.toUpperCase());
 			
 			ResultSet rels_rs = stmt.executeQuery();
@@ -378,7 +378,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			String dimension_key)
 			throws UniverseNotExistException {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		ArrayList<String> rels = new ArrayList<> ();
 		
@@ -427,7 +427,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		return rels;		
 	}
 
-	private ResultSet getColumns(String dimension, Connection conn) throws SQLException {
+	private ResultSet getColumns (String dimension, Connection conn) throws SQLException {
 		
 		DatabaseMetaData md = conn.getMetaData();
 		

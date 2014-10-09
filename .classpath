@@ -18,6 +18,8 @@
   <classpathentry kind="var" path="M2_REPO/xml-resolver/xml-resolver/1.2/xml-resolver-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-configuration/commons-configuration/1.10/commons-configuration-1.10.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/h2database/h2/1.4.178/h2-1.4.178.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.33/mysql-connector-java-5.1.33.jar"/>
+  <classpathentry kind="var" path="M2_REPO/c3p0/c3p0/0.9.1.2/c3p0-0.9.1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/glassfish/jersey/core/jersey-server/2.5.1/jersey-server-2.5.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/glassfish/jersey/core/jersey-common/2.5.1/jersey-common-2.5.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/14.0.1/guava-14.0.1.jar"/>

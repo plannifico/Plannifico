@@ -54,13 +54,13 @@ public class PlanningEngineImplTestCase {
 	@BeforeClass
 	public static void setUpBeforeClass () throws Exception {		
 			
-		Class.forName("org.h2.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
 		
 		conn = 
 				DriverManager.getConnection(
-						"jdbc:h2:~/PLN_UNIVERSE_TEST", 
-						"sa", 
-						"");
+						"jdbc:mysql://localhost:3306/PLN_UNIVERSE_TEST", 
+						"plannifico", 
+						"plannifico");
 		
 		/*
 		conn = 
@@ -222,8 +222,8 @@ public class PlanningEngineImplTestCase {
 		
 		for (PlanningField field: fields) {
 			
-			if (field.getKey().equals("BBB")) BB3 = field.getValue().toString();
-			if (field.getKey().equals("CCC")) C12 = field.getValue().toString();
+			if (field.getKey().equals("MSET1.BBB")) BB3 = field.getValue().toString();
+			if (field.getKey().equals("MSET1.CCC")) C12 = field.getValue().toString();
 		}
 		
 		assertEquals ("10.0_BBB5_CCC4_50.0", 
@@ -394,8 +394,8 @@ public class PlanningEngineImplTestCase {
 		
 		for (PlanningRecord record: dataset) {
 			
-			AA += record.getAttributeValue ("AA").getValue() + ":";
-			CC += record.getAttributeValue ("CC").getValue() + ":";
+			AA += record.getAttributeValue ("AAAA.AA").getValue() + ":";
+			CC += record.getAttributeValue ("CCC.CC").getValue() + ":";
 			
 			M1 += record.getMeasureValue ("M1").getNumberValue();
 			M2 += record.getMeasureValue ("M2").getNumberValue();

@@ -37,8 +37,8 @@ import org.plannifico.logic.LogicCalculationException;
 import org.plannifico.logic.PlannificoLogic;
 import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.ActionNotPermittedException;
+import org.plannifico.server.C3P0ConnectionPoolProvider;
 import org.plannifico.server.ConnectionPoolProvider;
-import org.plannifico.server.H2ConnectionPoolProvider;
 
 /**
  * A {@link MeasureSet} implementation based on a relational database
@@ -72,7 +72,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	
 	public Connection provideAConnection () throws SQLException {
 		
-		ConnectionPoolProvider cp = H2ConnectionPoolProvider.getInstance();
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
 		return cp.getConnection (this.planningUniverse);
 	}
@@ -558,12 +558,12 @@ public class RelationalMeasureSet implements MeasureSet {
 			
 			if (is_first_where) {
 				
-				where_clause += DIM_PREFIX + field_name_components [0] + ".\"" + field_name_components [1] + "\" = '" + eq_elements [1] + "'";
+				where_clause += DIM_PREFIX + field_name_components [0] + ".`" + field_name_components [1] + "` = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + ".\"" + field_name_components [1] + "\" = '" + eq_elements [1] + "'";
+				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + ".`" + field_name_components [1] + "` = '" + eq_elements [1] + "'";
 			
 			join_clause += 
 					RelationalPlanningSet.buildJoin (
@@ -613,7 +613,7 @@ public class RelationalMeasureSet implements MeasureSet {
 		return field_name_components [0] + 
 				" in (SELECT " + field_name_components [0] + 
 				" FROM DIM_" + field_name_components [0] + 
-				" WHERE \"" + field_name_components [1] + "\" = '" + eq_elements [1] + "')";
+				" WHERE `" + field_name_components [1] + "` = '" + eq_elements [1] + "')";
 	}
 
 	@Override

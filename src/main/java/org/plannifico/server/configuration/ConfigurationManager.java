@@ -27,6 +27,14 @@ public interface ConfigurationManager {
 	 */
 	public boolean loadConfiguration (String configuration_file);	
 
+
+	/**
+	 * Return the database driver where Plannifico planning data are stored
+	 * @return
+	 */
+	public String getDriver(String universe_name);
+
+	
 	/**
 	 * Return the databaseURL where Plannifico planning data are stored
 	 * @return

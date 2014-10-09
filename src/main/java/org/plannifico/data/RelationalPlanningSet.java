@@ -104,7 +104,7 @@ public class RelationalPlanningSet implements PlanningSet {
 		for (String measure_str : measures_split) {
 			
 			measure_clause +=  
-					"SUM (" + RelationalMeasureSet.MEASURE_PREFIX + 
+					"SUM(" + RelationalMeasureSet.MEASURE_PREFIX + 
 					measure_str + ") as " + measure_str + ",";
 		}
 		
@@ -120,7 +120,7 @@ public class RelationalPlanningSet implements PlanningSet {
 		for (String groupby_str : groupby_split) {
 			
 			select_clause +=  
-					RelationalMeasureSet.DIM_PREFIX + groupby_str.replace(".", ".\"") + "\",";
+					RelationalMeasureSet.DIM_PREFIX + groupby_str.replace(".", ".`") + "`,";
 		}
 		
 		return select_clause.substring(0, select_clause.length()-1);
@@ -164,12 +164,12 @@ public class RelationalPlanningSet implements PlanningSet {
 			
 			if (is_first_where) {
 				
-				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + ".\"" + attribute + "\" = '" + eq_elements [1] + "'";
+				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + ".`" + attribute + "` = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + ".\"" + attribute + "\" = '" + eq_elements [1] + "'";
+				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + ".`" + attribute + "` = '" + eq_elements [1] + "'";
 			
 			join_clause += buildJoin (dimension_already_in_join, measure_set_name, dimension);
 			

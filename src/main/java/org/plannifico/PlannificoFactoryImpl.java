@@ -36,7 +36,7 @@ import org.plannifico.logic.RelationalProportionalLogic;
 import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.logic.RelationalRoundedProportionalLogic;
 import org.plannifico.server.ConnectionPoolProvider;
-import org.plannifico.server.H2ConnectionPoolProvider;
+import org.plannifico.server.C3P0ConnectionPoolProvider;
 import org.plannifico.server.PlanningEngine;
 import org.plannifico.server.PlanningEngineImpl;
 import org.plannifico.server.configuration.ConfigurationManager;
@@ -64,9 +64,9 @@ public class PlannificoFactoryImpl implements PlannificoFactory {
 	}
 
 	@Override
-	public ConnectionPoolProvider getConnectionPoolProvider() {
+	public ConnectionPoolProvider getConnectionPoolProvider () {
 		
-		return new H2ConnectionPoolProvider();
+		return new C3P0ConnectionPoolProvider ();
 	}
 
 	@Override

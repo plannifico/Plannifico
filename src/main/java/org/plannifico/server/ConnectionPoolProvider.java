@@ -16,6 +16,8 @@ package org.plannifico.server;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.plannifico.server.configuration.ConfigurationManager;
+
 /**
  * Manage a ConnectionPool
  * 
@@ -25,7 +27,7 @@ import java.sql.SQLException;
 public interface ConnectionPoolProvider {
 	
 		
-	public boolean addConnectionPool (String universe, String URL, String user_name, String passwd);
+	public boolean addConnectionPool (String universe, String driver, String URL, String user_name, String passwd);
 	
 	public Connection getConnection (String universe) throws SQLException;
 
