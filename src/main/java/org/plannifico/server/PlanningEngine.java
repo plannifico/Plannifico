@@ -43,6 +43,15 @@ public interface PlanningEngine {
 	public final static int STOPPED = 0;
 
 	/**
+	 * Return true if the given universe has been loaded from the data source
+	 * 
+	 * @param universe
+	 * @return
+	 * @throws UniverseNotExistException 
+	 */
+	public boolean isUniverseLoadedFromSource (String universe) throws UniverseNotExistException;
+
+	/**
 	 * Return a planning record by its key for the given universe and measure set
 	 * accepting a strings as key with the following syntax: dimension1.field1=value1;...;dimensionn.fieldn=valuen
 	 * @return
@@ -291,5 +300,6 @@ public interface PlanningEngine {
 		String measures, 
 		String filter, 
 		String groupby) throws UniverseNotExistException, WrongQuerySintax;
+
 		
 }

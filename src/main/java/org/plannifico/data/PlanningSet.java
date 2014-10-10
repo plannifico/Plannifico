@@ -13,16 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 package org.plannifico.data;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.plannifico.data.records.PlanningRecord;
 
 /**
- * A {@link PlanningSet} represents a set af data
+ * A {@link PlanningSet} is a set af data
  * where is possible to run planning actions
  * 
- * @author ralfano
+ * @author Alfano Rosario
  *
  */
 public interface PlanningSet {

@@ -39,6 +39,8 @@ import org.plannifico.data.records.PlanningRecord;
 import org.plannifico.logic.LogicCalculationException;
 import org.plannifico.logic.PlannificoLogic.LogicType;
 
+import com.mchange.util.AssertException;
+
 
 public class PlanningEngineImplTestCase {
 
@@ -231,6 +233,24 @@ public class PlanningEngineImplTestCase {
 				record.getMeasureValue("M2").getNumberValue()
 				
 		);		
+	}
+	
+	@Test
+	public void testIsUniverseLoadedFromSource () 
+			throws ServerAlreadyRunningException, WrongPlanningRecordKey, UniverseNotExistException {
+		
+		engine.start(core_configuration_file);		
+		
+		assertTrue (engine.isUniverseLoadedFromSource ("TEST"));		
+	}
+	
+	@Test(expected=UniverseNotExistException.class)
+	public void testIsUniverseLoadedFromSourceException () 
+			throws ServerAlreadyRunningException, WrongPlanningRecordKey, UniverseNotExistException {
+		
+		engine.start(core_configuration_file);		
+		
+		engine.isUniverseLoadedFromSource ("TEST1");		
 	}
 
 

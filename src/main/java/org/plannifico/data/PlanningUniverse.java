@@ -24,7 +24,26 @@ import org.plannifico.server.ActionNotPermittedException;
 //import org.plannifico.server.logic.DistributionLogic;
 
 
-public interface PlanningUniverse {
+public interface PlanningUniverse {	
+	
+	/**
+	 * Return true if the {@link PlanningUniverse} is loaded
+	 * 
+	 * @return
+	 */
+	public boolean isLoadedFromSource ();
+	
+	/**
+	 * Load a {@link PlanningUniverse} from a source for the first time
+	 * 
+	 * @return
+	 */
+	public boolean loadFromSource ();
+	
+	/**
+	 * Populate the universe from the implementation data management system
+	 */
+	void populate();
 
 	/**
 	 * Return the universe name
@@ -212,6 +231,7 @@ public interface PlanningUniverse {
 	 */
 	public PlanningSet getDataSet(String measureset, String measures,
 			String filter, String groupby) throws WrongQuerySintax;
+
 
 	
 }

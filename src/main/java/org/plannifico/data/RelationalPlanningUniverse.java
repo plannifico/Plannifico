@@ -61,14 +61,60 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 	public RelationalPlanningUniverse (String universe_name) {
 		
 		name = universe_name;
+	}
+	
+	@Override
+	public boolean isLoadedFromSource () {
 		
 		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
 		
+		boolean result = true;
+		
+		try {
+		
+			Connection conn = cp.getConnection (this.name);
+			
+			DatabaseMetaData md = conn.getMetaData();
+			
+			ResultSet rs_dim = md.getTables(null, "PUBLIC", DIM_PREFIX, new String [] {"TABLE"});
+			
+			if (rs_dim.getRow() == 1) result = false;
+			
+			ResultSet rs_m = md.getTables(null,"PUBLIC",RelationalMeasureSet.MEASURE_SET_PREFIX + "%",new String [] {"TABLE"});
+			
+			if (rs_m.getRow() == 1) result = false;
+			
+			conn.close();
+		
+		} catch (SQLException e) {
+			
+			logger.warning (
+					String.format ("Error checking Universe data: %s", this.name, e.getMessage()));
+			
+			result = false;
+			
+		} 
+		return result;
+	}
+	
+	
+	@Override
+	public boolean loadFromSource () {
+		
+		return false;
+	}
+	
+	@Override
+	public void populate () {
+		
+		ConnectionPoolProvider cp = C3P0ConnectionPoolProvider.getInstance();
+
 		loadDimensions (cp);
 		
 		loadMeasureSet (cp);
-	}
 
+	}
+	
 	private void loadDimensions (ConnectionPoolProvider cp) {
 		
 		dimensions = new ArrayList<> ();
@@ -461,6 +507,4 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		return measureSets.get (measureset)
 				.getDataSet (measures, filter, groupby);
 	}
-
-
 }

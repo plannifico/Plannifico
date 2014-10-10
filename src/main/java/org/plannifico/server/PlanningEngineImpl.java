@@ -43,14 +43,13 @@ import org.plannifico.server.configuration.ConfigurationManager;
 public class PlanningEngineImpl implements PlanningEngine {
 	
 	private static final int MAX_THREADS = 20;
-
-
+	
 	private PlannificoFactory factory;
 	private ConfigurationManager configurationManager;
 	
 	private boolean isRunning = false;
 	
-	private Map <String, PlanningUniverse> planningUniverses = new HashMap<>();
+	private Map <String, PlanningUniverse> planningUniverses = new HashMap <> ();
 	
 	private ConnectionPoolProvider connectionPoolProvider;
 	
@@ -76,7 +75,7 @@ public class PlanningEngineImpl implements PlanningEngine {
     	    			
 		connectionPoolProvider = factory.getConnectionPoolProvider ();
     	
-		Set <String> universes = configurationManager.getPlanningUniverses();
+		Set <String> universes = configurationManager.getPlanningUniverses ();
     	
     	for (String universe_name : universes) {
     	
@@ -85,9 +84,12 @@ public class PlanningEngineImpl implements PlanningEngine {
         			configurationManager.getDriver (universe_name),
         			configurationManager.getDatabaseURL (universe_name), 
         			configurationManager.getPlanningDataDBUser (universe_name), 
-        			configurationManager.getPlanningDataDBPwd (universe_name)))
+        			configurationManager.getPlanningDataDBPwd (universe_name))) {
+         		
+         		logger.log (Level.SEVERE, "Error connecting to the database.");
         		
-        		return 1;   			
+        		return 1;   	
+         	}
     	}
     	
     	logger.log(Level.INFO, "Populating Planning Universes...");
@@ -103,6 +105,16 @@ public class PlanningEngineImpl implements PlanningEngine {
     			logger.log(Level.FINE, "connection ok...");
     			
     			PlanningUniverse universe = factory.getPlanningUniverse (universe_name);
+    			
+    			if (universe.isLoadedFromSource()) {
+    				
+    				universe.populate();
+    				
+    			} else {
+    				
+    				universe.loadFromSource ();
+    			}
+    				
             	
             	planningUniverses.put (universe_name, universe);
     		}    	        	
@@ -151,6 +163,14 @@ public class PlanningEngineImpl implements PlanningEngine {
 	public Collection<String> getUniverses () {
 		
 		return planningUniverses.keySet();
+	}	
+
+	@Override
+	public boolean isUniverseLoadedFromSource (String universe) throws UniverseNotExistException {
+		
+		if (!planningUniverses.containsKey (universe)) throw new UniverseNotExistException();
+		
+		return planningUniverses.get (universe).isLoadedFromSource();
 	}
 	
 	@Override
@@ -308,5 +328,6 @@ public class PlanningEngineImpl implements PlanningEngine {
 		
 		return planningUniverses.get(universe).getDataSet (measureset, measures, filter, groupby);
 	}
+
 
 }
