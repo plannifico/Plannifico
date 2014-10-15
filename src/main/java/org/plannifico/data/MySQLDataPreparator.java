@@ -1,0 +1,135 @@
+/*Copyright 2014 Rosario Alfano
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.*/
+package org.plannifico.data;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.apache.commons.configuration.XMLConfiguration;
+
+/**
+ * An implementation of a {@link DataPreparator} based on MySQL
+ * 
+ * @author Rosario Alfano
+ *
+ */
+public class MySQLDataPreparator implements DataPreparator {
+
+	public static String DEFAULT_SOURCE_DESCRIPTION_FILE = "conf/plannifico-data-source.xml";
+
+	private final Logger logger = Logger.getLogger (MySQLDataPreparator.class.getName());
+	
+	private Map<String,String> paths = new HashMap<>();
+	private Map<String,String>  dimensions = new HashMap<>();
+	private Map<String,String>  measuresets = new HashMap<>();
+	
+	@Override
+	public void prepare (String universe) {
+		
+		loadDataConfiguration (universe);
+		
+		prepareStructures (universe);
+		
+		loadData (universe);
+		
+	}
+
+	private boolean loadData (String universe) {
+		
+		return false;
+		
+	}
+
+	private void prepareStructures (String universe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private boolean loadDataConfiguration (String universe) {
+//		
+//		String configuration_file = DEFAULT_SOURCE_DESCRIPTION_FILE;
+//		
+//		try {
+//			
+//			logger.log(Level.INFO, "Loading data source configuration from:" + configuration_file);
+//			
+//			XMLConfiguration config = new XMLConfiguration (configuration_file); 
+//			
+//			config.load();
+//			
+//			config.setThrowExceptionOnMissing (true);
+//			
+//			if (config.isEmpty()) {
+//				logger.log(Level.WARNING,
+//						"Data Source Configuration file is empty:" + configuration_file);
+//				
+//				return false;
+//			}
+//				
+//			
+//			List<Object> planning_universes = config.getList ("Server.PlanningUniverses.Universe");
+//			
+//			for (Object universe : planning_universes) {
+//				
+//				String universe_name = (String) universe;
+//				
+//				databaseURL.put (universe_name, config.getString ("Server." + universe + ".planningDB.databaseURL"));
+//				//"Plannifico.Server.databaseURL");
+//		
+//				logger.log (Level.INFO, 
+//					String.format("Configuration for universe %s: databaseURL: %s", universe_name, databaseURL));
+//							
+//				/*workDatabaseURL = config.getString ("Server.workingDB.databaseURL");
+//				
+//				logger.log(Level.FINE, "Configuration: workDatabaseURL: " + workDatabaseURL);
+//				*/
+//				planningDataDBUser.put (universe_name, config.getString ("Server." + universe + ".planningDB.dBUser"));
+//				
+//				logger.log(Level.INFO, 
+//						String.format("Configuration for universe %s: user name: %s", universe_name, planningDataDBUser));
+//				
+//				planningDataDBPwd.put (universe_name, config.getString ("Server." + universe + ".planningDB.dBPwd"));
+//				
+//				planningDBDriver.put (universe_name, config.getString ("Server." + universe + ".planningDB.driver"));
+//				
+//				logger.log(Level.INFO, 
+//						String.format("Configuration for universe %s: password: %s", universe_name, planningDataDBPwd));
+//					
+//			}				
+//			
+//			/*
+//			workDataDBUser = config.getString ("Server.workingDB.dBUser");
+//			
+//			logger.log(Level.FINE, "Configuration: workDataDBUser: " + workDataDBUser);
+//			
+//			workDataDBPwd = config.getString ("Server.workingDB.dBPwd");
+//			
+//			logger.log(Level.FINE, "Configuration: workDataDBPwd: " + workDataDBPwd);
+//			*/
+//			configurationLoaded = true;
+//		}					
+//		catch (Exception e) {
+//
+//			logger.log(Level.SEVERE, "Error loading configuration " + e.getMessage());
+//			
+//			return false;
+//		}	
+//		
+		return true;
+		
+	}
+}

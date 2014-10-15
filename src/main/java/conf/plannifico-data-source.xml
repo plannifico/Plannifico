@@ -1,0 +1,32 @@
+<Plannifico>
+	<DataSourceConfigurations>
+		<path>/home/ralfano/Documents/Plannifico/plannifico-server/demo_data/<path>
+		<dimensions>
+			<dimension>
+				<file>Account.csv</file>
+				<name>Account</name>
+			</dimension>
+			<dimension>
+				<file>Period.csv</file>
+				<name>Period</name>
+			</dimension>
+			<dimension>
+				<file>Product.csv</file>
+				<name>Product</name>
+			</dimension>
+			<dimension>
+				<file>Province.csv</file>
+				<name>Province</name>
+			</dimension>
+			<dimension>
+				<file>Scenario.csv</file>
+				<name>Scenario</name>
+			</dimension>
+		</dimensions>
+		<measuresets>
+			<file>Sales.csv</file>
+			<name>Sales</name>
+		</measuresets>
+
+	</DataSourceConfigurations>
+</Plannifico>
