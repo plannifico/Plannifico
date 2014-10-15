@@ -43,7 +43,7 @@ import org.plannifico.server.ConnectionPoolProvider;
 /**
  * A {@link MeasureSet} implementation based on a relational database
  * 
- * @author ralfano
+ * @author Rosario Alfano
  *
  */
 public class RelationalMeasureSet implements MeasureSet {
@@ -51,6 +51,7 @@ public class RelationalMeasureSet implements MeasureSet {
 	public static final String MEASURE_SET_PREFIX = "MEASURE_SET_";
 	public static final String MEASURE_PREFIX = "VALUE_";
 	public static final String DIM_PREFIX = "DIM_";
+	public static final String DIM_SUFFIX = "$M";
 	
 	private String name;
 
@@ -558,12 +559,21 @@ public class RelationalMeasureSet implements MeasureSet {
 			
 			if (is_first_where) {
 				
-				where_clause += DIM_PREFIX + field_name_components [0] + ".`" + field_name_components [1] + "` = '" + eq_elements [1] + "'";
+				where_clause += DIM_PREFIX + 
+						field_name_components [0] + DIM_SUFFIX +
+						".`" + 
+						field_name_components [1] +						
+						"` = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + DIM_PREFIX + field_name_components [0] + ".`" + field_name_components [1] + "` = '" + eq_elements [1] + "'";
+				where_clause += " AND " + 
+						DIM_PREFIX + 
+						field_name_components [0] + DIM_SUFFIX +
+						".`" + 
+						field_name_components [1] +						
+						"` = '" + eq_elements [1] + "'";
 			
 			join_clause += 
 					RelationalPlanningSet.buildJoin (
@@ -612,7 +622,7 @@ public class RelationalMeasureSet implements MeasureSet {
 		
 		return field_name_components [0] + 
 				" in (SELECT " + field_name_components [0] + 
-				" FROM DIM_" + field_name_components [0] + 
+				" FROM " + RelationalMeasureSet.DIM_PREFIX + field_name_components [0] + RelationalMeasureSet.DIM_SUFFIX +  
 				" WHERE `" + field_name_components [1] + "` = '" + eq_elements [1] + "')";
 	}
 

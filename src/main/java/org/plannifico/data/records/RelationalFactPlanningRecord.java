@@ -128,7 +128,8 @@ public class RelationalFactPlanningRecord extends FactPlanningRecord {
 					addField (factory.getTextField (
 							column_name
 								.replace (RelationalMeasureSet.MEASURE_SET_PREFIX, "")
-								.replace (RelationalMeasureSet.DIM_PREFIX, ""), 
+								.replace (RelationalMeasureSet.DIM_PREFIX, "")
+								.replace (RelationalMeasureSet.DIM_SUFFIX, ""), 
 							(String) field));					
 					
 				} else if (field instanceof Number) {

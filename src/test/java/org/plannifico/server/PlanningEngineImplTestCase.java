@@ -81,7 +81,7 @@ public class PlanningEngineImplTestCase {
     	
     	stmt = conn.createStatement();
     	    	
-        String sql = "CREATE TABLE DIM_AAAA " +
+        String sql = "CREATE TABLE DIM_AAAA$M " +
                      "(AAAA VARCHAR(255) not NULL, " +
                      " A VARCHAR(255), " + 
                      " AA VARCHAR(255), " + 
@@ -89,26 +89,26 @@ public class PlanningEngineImplTestCase {
                      " PRIMARY KEY ( AAAA ))"; 
 
         stmt.executeUpdate (sql);
-        System.out.println("DIM_AAAA created");
+        System.out.println("DIM_AAAA$M created");
         
         
-        sql = "CREATE TABLE DIM_BBB " +
+        sql = "CREATE TABLE DIM_BBB$M " +
                 "(BBB VARCHAR(255) not NULL, " +
                 " B VARCHAR(255), " + 
                 " BB VARCHAR(255), " +                  
                 " PRIMARY KEY ( BBB ))"; 
 
         stmt.executeUpdate (sql);
-        System.out.println("DIM_BBB created");
+        System.out.println("DIM_BBB$M created");
         
-        sql = "CREATE TABLE DIM_CCC " +
+        sql = "CREATE TABLE DIM_CCC$M " +
                 "(CCC VARCHAR(255) not NULL, " +
                 " C VARCHAR(255), " + 
                 " CC VARCHAR(255), " +                 
                 " PRIMARY KEY ( CCC ))"; 
         
         stmt.executeUpdate (sql);        
-        System.out.println("DIM_CCC created");
+        System.out.println("DIM_CCC$M created");
         
         sql = "CREATE TABLE MEASURE_SET_MSET1 " +
                 "(AAAA VARCHAR(255) not NULL, " +
@@ -119,42 +119,42 @@ public class PlanningEngineImplTestCase {
                 " PRIMARY KEY ( AAAA,BBB,CCC ))"; 
         
         stmt.executeUpdate (sql);        
-        System.out.println("DIM_CCC created");     
+        System.out.println("DIM_CCC$M created");     
 
-        stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA1','A1','AA1','AAA1')");
-        stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA2','A1','AA1','AAA1')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA3','A1','AA1','AAA1')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA4','A1','AA2','AAA1')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA5','A2','AA2','AAA1')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA6','A2','AA2','AAA1')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA7','A2','AA3','AAA2')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA8','A2','AA3','AAA2')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA9','A2','AA3','AAA2')");
-		stmt.executeUpdate ("INSERT INTO DIM_AAAA VALUES ('AAAA10','A2','AA3','AAA2')");		
+        stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA1','A1','AA1','AAA1')");
+        stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA2','A1','AA1','AAA1')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA3','A1','AA1','AAA1')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA4','A1','AA2','AAA1')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA5','A2','AA2','AAA1')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA6','A2','AA2','AAA1')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA7','A2','AA3','AAA2')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA8','A2','AA3','AAA2')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA9','A2','AA3','AAA2')");
+		stmt.executeUpdate ("INSERT INTO DIM_AAAA$M VALUES ('AAAA10','A2','AA3','AAA2')");		
 		
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB1','B1','BB1')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB2','B1','BB1')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB3','B1','BB2')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB4','B2','BB2')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB5','B2','BB3')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB6','B2','BB2')");
-		stmt.executeUpdate ("INSERT INTO DIM_BBB VALUES ('BBB7','B2','BB3')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB1','B1','BB1')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB2','B1','BB1')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB3','B1','BB2')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB4','B2','BB2')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB5','B2','BB3')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB6','B2','BB2')");
+		stmt.executeUpdate ("INSERT INTO DIM_BBB$M VALUES ('BBB7','B2','BB3')");
 		
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC1','C4','CC3')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC2','C2','CC3')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC3','C1','CC3')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC4','C12','CC3')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC5','C4','CC7')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC6','C4','CC8')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC7','C4','CC9')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC8','C4','CC2')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC9','C4','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC10','C2','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC11','C4','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC12','C5','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC13','C5','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC14','C5','CC1')");
-		stmt.executeUpdate ("INSERT INTO DIM_CCC VALUES ('CCC15','C5','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC1','C4','CC3')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC2','C2','CC3')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC3','C1','CC3')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC4','C12','CC3')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC5','C4','CC7')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC6','C4','CC8')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC7','C4','CC9')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC8','C4','CC2')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC9','C4','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC10','C2','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC11','C4','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC12','C5','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC13','C5','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC14','C5','CC1')");
+		stmt.executeUpdate ("INSERT INTO DIM_CCC$M VALUES ('CCC15','C5','CC1')");
 
         
 		stmt.executeUpdate ("INSERT INTO MEASURE_SET_MSET1 VALUES('AAAA1','BBB2','CCC5',20,10)");
@@ -172,9 +172,9 @@ public class PlanningEngineImplTestCase {
 		  
 		  	SELECT * 
 			FROM MEASURE_SET_MSET1 M 
-			join DIM_AAAA D_A on D_A.AAAA = M.AAAA 
-			join DIM_BBB D_B on D_B.BBB = M.BBB
-			join DIM_CCC D_C on D_C.CCC = M.CCC
+			join DIM_AAAA$M D_A on D_A.AAAA = M.AAAA 
+			join DIM_BBB$M D_B on D_B.BBB = M.BBB
+			join DIM_CCC$M D_C on D_C.CCC = M.CCC
 		  
 		 */
 	}
@@ -184,17 +184,17 @@ public class PlanningEngineImplTestCase {
 		
 		stmt = conn.createStatement();
     			
-        stmt.executeUpdate ("DROP TABLE DIM_AAAA;");
+        stmt.executeUpdate ("DROP TABLE DIM_AAAA$M;");
         
-        System.out.println("DIM_AAAA dropped");
+        System.out.println("DIM_AAAA$M dropped");
         		
-        stmt.executeUpdate ("DROP TABLE DIM_BBB;");
+        stmt.executeUpdate ("DROP TABLE DIM_BBB$M;");
         
-        System.out.println("DIM_BBB dropped");
+        System.out.println("DIM_BBB$M dropped");
         		
-        stmt.executeUpdate ("DROP TABLE DIM_CCC;");
+        stmt.executeUpdate ("DROP TABLE DIM_CCC$M;");
         
-        System.out.println("DIM_CCC dropped");
+        System.out.println("DIM_CCC$M dropped");
         
         stmt.executeUpdate ("DROP TABLE MEASURE_SET_MSET1;");
         
@@ -331,9 +331,9 @@ public class PlanningEngineImplTestCase {
 		/*
 		SELECT * 
 		FROM MEASURE_SET_MSET1 M 
-		join DIM_AAAA D_A on D_A.AAAA = M.AAAA 
-		join DIM_BBB D_B on D_B.BBB = M.BBB
-		join DIM_CCC D_C on D_C.CCC = M.CCC
+		join DIM_AAAA$M D_A on D_A.AAAA = M.AAAA 
+		join DIM_BBB$M D_B on D_B.BBB = M.BBB
+		join DIM_CCC$M D_C on D_C.CCC = M.CCC
 		WHERE D_A.A = 'A2' AND D_B.BB = 'BB1'
 				
 		*/
@@ -369,9 +369,9 @@ public class PlanningEngineImplTestCase {
 		/*
 		SELECT SUM(VALUE_M1)
 		FROM MEASURE_SET_MSET1 M 
-		join DIM_AAAA D_A on D_A.AAAA = M.AAAA 
-		join DIM_BBB D_B on D_B.BBB = M.BBB
-		join DIM_CCC D_C on D_C.CCC = M.CCC
+		join DIM_AAAA$M D_A on D_A.AAAA = M.AAAA 
+		join DIM_BBB$M D_B on D_B.BBB = M.BBB
+		join DIM_CCC$M D_C on D_C.CCC = M.CCC
 		WHERE D_A.A = 'A2' AND D_B.BB = 'BB1'
 				
 		*/
@@ -395,9 +395,9 @@ public class PlanningEngineImplTestCase {
 		/*
 		SELECT D_A.AA, D_C.CC, SUM(VALUE_M1) as M1, SUM(VALUE_M2) as M2
 		FROM MEASURE_SET_MSET1 M 
-		join DIM_AAAA D_A on D_A.AAAA = M.AAAA 
-		join DIM_BBB D_B on D_B.BBB = M.BBB
-		join DIM_CCC D_C on D_C.CCC = M.CCC
+		join DIM_AAAA$M D_A on D_A.AAAA = M.AAAA 
+		join DIM_BBB$M D_B on D_B.BBB = M.BBB
+		join DIM_CCC$M D_C on D_C.CCC = M.CCC
 		WHERE D_B.BB = 'BB1' and D_A.A = 'A2'
 		GROUP BY D_A.AA, D_C.CC
 		*/

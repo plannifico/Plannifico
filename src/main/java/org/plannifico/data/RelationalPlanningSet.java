@@ -110,17 +110,18 @@ public class RelationalPlanningSet implements PlanningSet {
 		
 		return measure_clause.substring(0, measure_clause.length()-1);
 	}
-	
+
 	private String getSelectClause() {
 		
 		String select_clause = "";
 		
-		String [] groupby_split = groupby.split(";");
+		String [] groupby_split = groupby.split (";");
 		
 		for (String groupby_str : groupby_split) {
 			
 			select_clause +=  
-					RelationalMeasureSet.DIM_PREFIX + groupby_str.replace(".", ".`") + "`,";
+					RelationalMeasureSet.DIM_PREFIX + 
+						groupby_str.replace(".", RelationalMeasureSet.DIM_SUFFIX + ".`") + "`,";
 		}
 		
 		return select_clause.substring(0, select_clause.length()-1);
@@ -164,12 +165,12 @@ public class RelationalPlanningSet implements PlanningSet {
 			
 			if (is_first_where) {
 				
-				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + ".`" + attribute + "` = '" + eq_elements [1] + "'";
+				where_clause += RelationalMeasureSet.DIM_PREFIX + dimension + RelationalMeasureSet.DIM_SUFFIX + ".`" + attribute  + "` = '" + eq_elements [1] + "'";
 				is_first_where = false;				
 			}
 				
 			else 
-				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + ".`" + attribute + "` = '" + eq_elements [1] + "'";
+				where_clause += " AND " + RelationalMeasureSet.DIM_PREFIX + dimension + RelationalMeasureSet.DIM_SUFFIX + ".`" + attribute + "` = '" + eq_elements [1] + "'";
 			
 			join_clause += buildJoin (dimension_already_in_join, measure_set_name, dimension);
 			
@@ -212,13 +213,14 @@ public class RelationalPlanningSet implements PlanningSet {
 		
 		if (dimension_already_in_join.containsKey(dimension))
 			join_clause = " AND " +						
-					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
+					RelationalMeasureSet.DIM_PREFIX + dimension + RelationalMeasureSet.DIM_SUFFIX + "." + dimension +" = " + 
 					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
 					dimension;
 		else
-			join_clause = " JOIN DIM_" + 
-					dimension + " on " +
-					RelationalMeasureSet.DIM_PREFIX + dimension + "." + dimension + " = " + 
+			join_clause = " JOIN " + RelationalMeasureSet.DIM_PREFIX + 
+					dimension + RelationalMeasureSet.DIM_SUFFIX + 
+					" on " +
+					RelationalMeasureSet.DIM_PREFIX + dimension + RelationalMeasureSet.DIM_SUFFIX + "." + dimension + " = " + 
 					RelationalMeasureSet.MEASURE_SET_PREFIX + measure_set_name + "." + 
 					dimension;
 		

@@ -34,19 +34,17 @@ import org.plannifico.logic.PlannificoLogic.LogicType;
 import org.plannifico.server.ActionNotPermittedException;
 import org.plannifico.server.C3P0ConnectionPoolProvider;
 import org.plannifico.server.ConnectionPoolProvider;
-import org.plannifico.server.PlanningEngineImpl;
-
-
 /**
  * A relational-based implementation of a {@link PlanningUniverse}
  * 
- * @author ralfano
+ * @author Rosario Alfano
  *
  */
 public class RelationalPlanningUniverse implements PlanningUniverse {
 
-	private static final String DIM_PREFIX = "DIM_%";
-
+	private static final String DIM_PREFIX_SEARCH = "DIM_%";
+	
+	
 	private Map <String, MeasureSet> measureSets 
 		= new HashMap <String, MeasureSet> ();
 	
@@ -76,7 +74,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			DatabaseMetaData md = conn.getMetaData();
 			
-			ResultSet rs_dim = md.getTables(null, "PUBLIC", DIM_PREFIX, new String [] {"TABLE"});
+			ResultSet rs_dim = md.getTables(null, "PUBLIC", DIM_PREFIX_SEARCH, new String [] {"TABLE"});
 			
 			if (rs_dim.getRow() == 1) result = false;
 			
@@ -127,11 +125,13 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			DatabaseMetaData md = conn.getMetaData();
 			
-			ResultSet rs = md.getTables(null, "PUBLIC", DIM_PREFIX, new String [] {"TABLE"});
+			ResultSet rs = md.getTables(null, "PUBLIC", DIM_PREFIX_SEARCH, new String [] {"TABLE"});
 			
 			while (rs.next()) {
 				
-				String dimension_name = rs.getString ("TABLE_NAME").replace("DIM_", "");
+				String dimension_name = rs.getString ("TABLE_NAME")
+						.replace( RelationalMeasureSet.DIM_PREFIX, "")
+						.replace( RelationalMeasureSet.DIM_SUFFIX, "");
 				
 				dimensions.add (dimension_name);
 			}
@@ -273,13 +273,16 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			
 			DatabaseMetaData md = conn.getMetaData();
 			
-			ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
+			ResultSet rs = md.getTables(null, "PUBLIC", 
+					RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX, new String [] {"TABLE"});
 			
 			if (!rs.next()) return rels;
 			
-			logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
+			logger.fine (String.format ("Table %s exists.", 
+					RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX));
 			
-			rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
+			rs = md.getColumns(null, "PUBLIC", 
+					RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX, null);
 			
 			int i=1;
 			
@@ -297,7 +300,9 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			PreparedStatement stmt = 
 					conn.prepareStatement (
 							"SELECT " + cols + "1" +
-							" FROM DIM_" + dimension.toUpperCase());
+							" FROM " + 	RelationalMeasureSet.DIM_PREFIX + 
+										dimension.toUpperCase() + 
+										RelationalMeasureSet.DIM_SUFFIX);
 			
 			ResultSet rels_rs = stmt.executeQuery();
 			
@@ -391,7 +396,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 			PreparedStatement stmt = 
 					conn.prepareStatement (
 							"SELECT distinct `" + attribute + "`" +
-							" FROM DIM_" + dimension.toUpperCase());
+							" FROM " + RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX);
 			
 			ResultSet rels_rs = stmt.executeQuery();
 			
@@ -447,7 +452,7 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 				PreparedStatement stmt = 
 						conn.prepareStatement (
 								"SELECT *" +  
-								" FROM DIM_" + dimension.toUpperCase() + 
+								" FROM " + RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX +  
 								" WHERE " +dimension + " = '"+ dimension_key + "'");
 				
 				ResultSet rels_rs = stmt.executeQuery();
@@ -477,13 +482,15 @@ public class RelationalPlanningUniverse implements PlanningUniverse {
 		
 		DatabaseMetaData md = conn.getMetaData();
 		
-		ResultSet rs = md.getTables(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), new String [] {"TABLE"});
+		ResultSet rs = md.getTables(null, "PUBLIC", 
+				RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX, new String [] {"TABLE"});
 		
 		if (!rs.next()) return null;
 		
 		logger.fine (String.format ("Table %s exists.", "DIM_" + dimension.toUpperCase()));
 		
-		rs = md.getColumns(null, "PUBLIC", "DIM_" + dimension.toUpperCase(), null);
+		rs = md.getColumns(null, "PUBLIC", 
+				RelationalMeasureSet.DIM_PREFIX + dimension.toUpperCase() + RelationalMeasureSet.DIM_SUFFIX, null);
 		
 		return rs;
 	}
